@@ -1,6 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <link rel="stylesheet" href="style.css" />
+    </head>
+
+<body>
 <main>
 
-<p>Task Master</p>
+    <h2>Task Master</h2>
+    <div id="menu">
+        <button type="button" id="add-team">Add Team</button>
+        <button type="button" id="find-team">Find Team</button>
+        <button type="button" id="add-task">Add Task</button>
+    </div>
 
-</main>
-<script src="index.js"></script>
+    <div id="task-form">
+        <p>Add a Task</p>
+        <input type="text" name="title" value placeholder="Task Name" class="task-input"><br>
+        <input type="text" name="due_date" value placeholder="Needed By Date" class="task-input"><br>
+        <label>Urgent?</label>
+        <input type="checkbox" name="urgency" value placeholder="false" class="task-input"><br>
+        <input type="hidden" name="complete" class="task-input">
+        <input type="text" name="description" value placeholder="Describe Task" class="task-input"><br>
+        <input type="hidden" name="team_id" class="task-input">
+        <input type="submit" value="Add Task" class="task-submit">
+        <!-- HIDDEN VALUE COULD PROBABLY JUST BE IN JS POST w/ "this"? -->
+    </div>
+
+    <div id="team-container">
+        <p>hi</p>
+    </div>
+
+    <div class="task-container">
+
+    </div>
+
+
+    </main>
+    </body>
+    <script src="index.js"></script>
+    </html>
