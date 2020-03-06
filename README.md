@@ -4,11 +4,13 @@ Task Master is a Javascript application with a Rails API, built for groups of us
 
 ## Getting Started
 
-To run the project locally, clone the repository, run 'bundle install', and type 'rails s' into the terminal to run on a local host. If database migrations are bending on your local host, in your terminal run 'rails db:migrate' while in the backend folder of the application.
+To run the project locally, clone the repository and run 'bundle install'. If database migrations are bending on your local host, in your terminal run 'rails db:migrate' while in the backend folder of the application.
+
+To see the page, run "open index.html" from the frontend, and while in the backend, start the server with the "rails s".
 
 ### Prerequisites
 
-TK
+The application works with the fast-jsonapi gem.
 
 ## Built With
 
