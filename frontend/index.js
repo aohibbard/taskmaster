@@ -15,11 +15,10 @@ const taskForm = document.querySelector("#task-form")
 // TEAM FUNCTIONS
 //to fetch specific team, we need to pass in an argument of team name, then query that specific name in the fetch command
 function fetchTeams(){
+    // CHANGE TO ACCEPT PARAMETERS
     fetch(TEAMS_URL)
     .then(res => res.json())
     .then(teams => parseTeam(teams));
-   //.then(teams => displayTeam(teams));
-   //ned to parse obj in function
 };
 
 function parseTeam(team){
@@ -27,9 +26,11 @@ function parseTeam(team){
         let teamAttr = teamUnit.attributes
         let teamCard = displayTeam(teamAttr)
     }
-    bodyMain.innerHTML += teamCard;
+    //additional functionality of buttons, etc?
+    //pass in tasks? teamAttr.tasks.forEach(function to create task array)
 }
 
+//Team rendered to DOM by calling this function
 function displayTeam(team){
     const teamField = document.querySelector('#team-container')
     teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
@@ -80,10 +81,12 @@ newTaskBtn.addEventListener("click", () => {
     }
     //post
 });
-
+document.querySelector(".task-submit").addEventListener("click", addTask);
 function addTask(e){
-    e.preventDefault()
+    //e.preventDefault()
 
+
+    // >>>> DEBUG FROM HERE!!!!
     let taskInputs = document.querySelectorAll("input.task-input");
     let configObj = {
         method: "POST",
