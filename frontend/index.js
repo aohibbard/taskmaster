@@ -2,7 +2,6 @@
 
 let taskFormShow = false;
 
-
 const BASE_URL = "http://localhost:3000";
 const TEAMS_URL = "http://localhost:3000/teams";
 const TASKS_URL = "http://localhost:3000/tasks";
@@ -13,12 +12,19 @@ const taskForm = document.querySelector("#task-form")
 
 
 // TEAM FUNCTIONS
-//to fetch specific team, we need to pass in an argument of team name, then query that specific name in the fetch command
-function fetchTeams(){
-    // CHANGE TO ACCEPT PARAMETERS
+//this needs an event listener to pass in the team name
+const findTeamBtn = document.querySelector("#find-team-submit");
+findTeamBtn.addEventListener("click", fetchTeams);
+
+function fetchTeams(e){
+    const teamNameInput = document.querySelector("#find-team");
+    //how to pass a specific parameter in
     fetch(TEAMS_URL)
     .then(res => res.json())
-    .then(teams => parseTeam(teams));
+    //.then(teams => console.log(teams))
+    .then(teams => parseTeam(teams))
+    .catch(error => console.log(error));
+
 };
 
 function parseTeam(team){
@@ -33,36 +39,43 @@ function parseTeam(team){
 //Team rendered to DOM by calling this function
 function displayTeam(team){
     const teamField = document.querySelector('#team-container')
+    const teamTasks = createTaskField(team.tasks)
     teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
         <h2>${team.name}</h2>
         <h2>Our Tasks</h2>
+        <ul class="team-tasks-${team.id}" data-id="${team.id}">
+            ${teamTasks}
+        </ul>
     </div>`
+}
+
+//APPENDING TASKS TO DOM
+
+function createTaskField(taskList){
+    let teamTasks = '';
+    for (const task of taskList){
+        teamTasks += createIndividualTask(task)
+    };
+    return teamTasks;
+}
+
+function createIndividualTask(task){
+    return `<div class="task" task-data-id="${task.id}">
+        <li>${task.title}</li>
+        <li>Due: ${task.due_date}</li>
+        <li>Urgency: ${task.urgent}</li>
+        <li>Notes: ${task.description}<li>
+        <button class="complete" data-id="${task.id}">Complete?</button>
+    </div>`;
+    //edit & delete functions?
+    const completeBtn = document.getElementsByClassName("#complete");
+    //completeBtn.addEventListener('click', (e) => //complete status) 
+
 }
 
 //TASK METHODS
 //Fetch & Render
 
-//must pass in team_id
-function getTasks(){
-    fetch(TASKS_URL)
-    .then(res => res.json())
-    .then (tasks => console.log(tasks))
-    // add DOM function => identify team's tasks
-};
-
-function taskCard(){
-    let tasks = document.querySelector("#task-container")
-    tasks.innerHTML += `<div class="task" data-set="${task.id}">
-        <h3>${task.title}</h3>
-        <p>Due: ${task.due_date}</p>
-        <p>Urgency: ${task.urgent}</p>
-        <p>Notes: ${task.description}<p>
-        <button class="complete" id="${task.id}">Complete?</button>
-    </div>`;
-    //edit & delete functions?
-    const completeBtn = document.getElementsByClassName("#complete");
-    //completeBtn.addEventListener('click', (e) => //complete status) 
-}
 
 
 
@@ -84,7 +97,8 @@ newTaskBtn.addEventListener("click", () => {
 document.querySelector(".task-submit").addEventListener("click", addTask);
 function addTask(e){
     //e.preventDefault()
-
+    //change to have target id or wahtever
+    const goopUl = document.querySelector(".team-tasks-3")
 
     // >>>> DEBUG FROM HERE!!!!
     let taskInputs = document.querySelectorAll("input.task-input");
@@ -95,20 +109,21 @@ function addTask(e){
             Accept: "application/json"
         },
         body: JSON.stringify({
-            "name": taskInputs[0].value,
+            "title": taskInputs[0].value,
             "due_date": taskInputs[1].value,
             "urgency": taskInputs[2],
             // this is not reading the checked value
             "complete": false,
-            "description": taskInputs[4].value
-            // "team_id": ,
+            "description": taskInputs[4].value,
+            "team_id": 3,
             // "created_at": ,
         }),
     };
-    fetch("TASKS_URL", configObj)
+    
+    fetch(TASKS_URL, configObj)
     .then( res => res.json())
-    .then( newTask => console.log(newTask))
-    //.then(newTask => renderToDOM)
-}
-
-fetchTeams();
+    .then( newTask => {
+       let taskElement = createIndividualTask(newTask)
+        goopUl.innerHTML += taskElement;
+    });
+};

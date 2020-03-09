@@ -9,9 +9,12 @@ class TasksController < ApplicationController
     # end 
 
     def create
-        task = Team.find_by(id: params[:id])
-        team.tasks.create(title: params[:title], due_date: params[:due_date], urgency: params[:urgency], description: params[:description])
-        render json: team.tasks.last
+        # REFACTOR THIS WHOLE THING TO PASS IN A TEAM! should be 
+        # team = team.find_by(id: params[:id])
+        # team.tasks.create ... 
+        # render json: team.tasks.last
+        task = Task.create(title: params[:title], due_date: params[:due_date], urgency: params[:urgency], description: params[:description], team_id: params[:team_id])
+        render json: task
         # strong params?
     end
 
