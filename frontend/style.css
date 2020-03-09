@@ -1,8 +1,8 @@
-#task-form {
+.toggle-form {
     padding: 1rem;
     width: stretch;
     height: auto;
     display: none;
-    background: #515DA2;
+    background:#rgb(203, 205, 219)
     opacity: .8;
   }

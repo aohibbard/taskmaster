@@ -13,10 +13,17 @@
         <button type="button" id="add-task">Add Task</button><br>
         <label>Find Team</label>
         <input type="text" name="team" id="find-team"><br>
-        <input type="submit" name="find-team-sumit" id="find-team-submit">
+        <input type="submit" name="find-team-submit" id="find-team-submit">
     </div>
 
-    <div id="task-form">
+    <div id="add-team-form" class="toggle-form">
+        <p>Create Your Team</p>
+        <label>Add Team</label>
+        <input type="text" name="team-name" value placeholder="Team Name" class="add-team-name"><br>
+        <input type="submit" value="Create Team" id="create-team-btn">
+    </div>
+
+    <div id="task-form" class="toggle-form">
         <p>Add a Task</p>
         <input type="text" name="title" value placeholder="Task Name" class="task-input"><br>
         <input type="text" name="due_date" value placeholder="Needed By Date" class="task-input"><br>

@@ -1,6 +1,7 @@
 //class AppendHelper
 
 let taskFormShow = false;
+let newTeamFormShow = false; 
 
 const BASE_URL = "http://localhost:3000";
 const TEAMS_URL = "http://localhost:3000/teams";
@@ -9,6 +10,7 @@ const bodyMain = document.querySelector('main');
 
 const newTaskBtn = document.querySelector("#add-task")
 const taskForm = document.querySelector("#task-form")
+const newTeamForm = document.querySelector('#add-team-form')
 
 
 // TEAM FUNCTIONS
@@ -39,12 +41,22 @@ function parseTeam(team){
 //Team rendered to DOM by calling this function
 function displayTeam(team){
     const teamField = document.querySelector('#team-container')
-    const teamTasks = createTaskField(team.tasks)
+    let teamTasks = createTaskField(team.tasks)
     teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
         <h2>${team.name}</h2>
         <h2>Our Tasks</h2>
         <ul class="team-tasks-${team.id}" data-id="${team.id}">
             ${teamTasks}
+        </ul>
+    </div>`
+}
+
+function displayNewTeam(team){
+    const teamField = document.querySelector('#team-container')
+    teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
+        <h2>${team.name}</h2>
+        <h2>Our Tasks</h2>
+        <ul class="team-tasks-${team.id}" data-id="${team.id}">
         </ul>
     </div>`
 }
@@ -79,12 +91,45 @@ function createIndividualTask(task){
 
 
 
-//ADDING TASK
-//toggle view, task form
-//send post request
-//append task to DOM
+
+//toggle view of add team form
+
+const addTeamBtn = document.querySelector("#add-team");
+
+addTeamBtn.addEventListener("click", () => {
+    newTeamFormShow = !newTeamFormShow;
+    if (newTeamFormShow) {
+        newTeamForm.style.display = "block";
+    } else {
+        newTeamForm.style.display = "none";
+    };
+});
+
+//create team Function
+
+ const createTeamBtn = document.querySelector("#create-team-btn");
+ createTeamBtn.addEventListener("click", createTeam)
+
+ function createTeam(e){
+    let configObj = {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            name: document.querySelector(".add-team-name").value,
+        })
+    };
+    fetch(TEAMS_URL, configObj)
+    .then(res => res.json())
+    .then(team => displayNewTeam(team))
+    //parseTeam is wrong
+};
 
 
+
+// toggle view of create task 
 newTaskBtn.addEventListener("click", () => {
     taskFormShow = !taskFormShow; 
     if (taskFormShow) {
@@ -92,15 +137,14 @@ newTaskBtn.addEventListener("click", () => {
     } else {
         taskForm.style.display = "none";
     }
-    //post
 });
+
 document.querySelector(".task-submit").addEventListener("click", addTask);
 function addTask(e){
     //e.preventDefault()
     //change to have target id or wahtever
     const goopUl = document.querySelector(".team-tasks-3")
 
-    // >>>> DEBUG FROM HERE!!!!
     let taskInputs = document.querySelectorAll("input.task-input");
     let configObj = {
         method: "POST",
