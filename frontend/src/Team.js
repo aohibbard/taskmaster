@@ -2,15 +2,16 @@ class Team{
 
     static all = [];
 
-    constructor({name, slug}){
+    constructor({id, name, slug}){
+        this.id = id,
         this.name = name;
         this.slug = slug;
+        this.tasks = []
 
         Team.all.push(this)
     }
 
     findTeam(query){
-        return Team.all.find(query => query === this.name)
-
+        return Team.all.find(team => team.name === query)
     }
 }
