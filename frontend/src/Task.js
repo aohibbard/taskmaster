@@ -7,5 +7,14 @@ class Task {
         this.urgency = urgency,
         this.description = description
         this.team_id = team_id
+        //this.created_at = created_at 
     }
+
+    tasks(){
+        return Task.all.filter(function(team){
+            return task.team_id === this.id
+        }, this)
+    }
+
+    //render
 }

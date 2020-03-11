@@ -56,8 +56,10 @@ function displayNewTeam(team){
     teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
         <h2>${team.name}</h2>
         <h2>Our Tasks</h2>
+        <div class="team-task-container">
         <ul class="team-tasks-${team.id}" data-id="${team.id}">
         </ul>
+        </div>
     </div>`
 }
 

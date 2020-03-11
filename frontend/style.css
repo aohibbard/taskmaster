@@ -6,3 +6,9 @@
     background:#rgb(203, 205, 219)
     opacity: .8;
   }
+
+  .task{
+    display: inline-grid;
+    grid-column-gap: 60px;
+    grid-row-gap: 10px;
+  }
