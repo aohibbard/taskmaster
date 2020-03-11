@@ -1,0 +1,5 @@
+//basically fetch
+
+class TaskAdapter{
+    
+}

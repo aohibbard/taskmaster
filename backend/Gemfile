@@ -12,6 +12,8 @@ gem 'puma', '~> 4.1'
 gem 'json-prettyprint', '~> 0.0.2'
 gem 'pry'
 gem 'fast_jsonapi'
+gem 'friendly_id'
+# https://github.com/norman/friendly_id
 # gem 'bootstrap'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'

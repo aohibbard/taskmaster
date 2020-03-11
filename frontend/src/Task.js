@@ -1,4 +1,4 @@
-// could Task methods be handled here?
+//object instances
 
 class Task {
     constuctor({title, due_date, urgency, description, team_id}){

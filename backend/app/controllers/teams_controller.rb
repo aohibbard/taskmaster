@@ -14,9 +14,8 @@ class TeamsController < ApplicationController
     end 
 
     def show  
-        team = Team.find_by(id: params[:id])
-        #team = Team.find_by(name: params[:name])
-        render json: TrainerSerializer.new(team)
+        team = Team.friendly.find(params[:id])
+        render json: TeamSerializer.new(team)
     end 
 
 end

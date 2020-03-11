@@ -19,8 +19,8 @@ const findTeamBtn = document.querySelector("#find-team-submit");
 findTeamBtn.addEventListener("click", fetchTeams);
 
 function fetchTeams(e){
-    const teamNameInput = document.querySelector("#find-team");
-    //how to pass a specific parameter in
+    const teamNameInput = document.querySelector("#find-team").value; 
+
     fetch(TEAMS_URL)
     .then(res => res.json())
     //.then(teams => console.log(teams))
@@ -78,11 +78,17 @@ function createIndividualTask(task){
         <li>Urgency: ${task.urgent}</li>
         <li>Notes: ${task.description}<li>
         <button class="complete" data-id="${task.id}">Complete?</button>
-    </div>`;
+        <button class ="delete-tasks" data-id="${task.id}">Delete</button>
+        <br>
+    </div>` ; 
     //edit & delete functions?
-    const completeBtn = document.getElementsByClassName("#complete");
-    //completeBtn.addEventListener('click', (e) => //complete status) 
+    //const completeBtn = document.getElementsByClassName("#complete");
+    //completeBtn.addEventListener('click', completeTask) 
+}
 
+function completeTask(e){
+    //complete task
+    //target dataset
 }
 
 //TASK METHODS
@@ -124,7 +130,6 @@ addTeamBtn.addEventListener("click", () => {
     fetch(TEAMS_URL, configObj)
     .then(res => res.json())
     .then(team => displayNewTeam(team))
-    //parseTeam is wrong
 };
 
 
