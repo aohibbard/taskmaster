@@ -2,11 +2,39 @@
 let taskFormShow = false;
 let newTeamFormShow = false; 
 
+const BASE_URL = "http://localhost:3000";
+const TEAMS_URL = "http://localhost:3000/teams";
+const TASKS_URL = "http://localhost:3000/tasks";
+
 //DOM elements
 const bodyMain = document.querySelector('main');
 const newTaskBtn = document.querySelector("#add-task")
 const taskForm = document.querySelector("#task-form")
 const newTeamForm = document.querySelector('#add-team-form')
+const addTeamBtn = document.querySelector("#add-team");
+
+const createTeamBtn = document.querySelector("#create-team-btn");
+
+
+//Toggle Create Task
+newTaskBtn.addEventListener("click", () => {
+    taskFormShow = !taskFormShow; 
+    if (taskFormShow) {
+       taskForm.style.display = "block";
+    } else {
+        taskForm.style.display = "none";
+    }
+});
+
+//toggle view of add team form
+addTeamBtn.addEventListener("click", () => {
+    newTeamFormShow = !newTeamFormShow;
+    if (newTeamFormShow) {
+        newTeamForm.style.display = "block";
+    } else {
+        newTeamForm.style.display = "none";
+    };
+});
 
 //initiate fetch
 const teamsAdapter = new TeamAdapter("http://localhost:3000/teams")
@@ -61,6 +89,18 @@ function renderTeam(team){
     document.getElementById("load-tasks").addEventListener("click", createTaskField)
 }
 
+// Add New Team
+createTeamBtn.addEventListener("click", newTeamSubmit)
+
+function newTeamSubmit(e){
+    let teamName = document.querySelector(".add-team-name").value;
+    let teamObj = {name: teamName}
+    teamsAdapter.createNewTeam(teamObj)
+    
+    //toggle view so form hides, input clears
+}
+
+
 //This could be in the Task Adapter
 function createTaskField(e){
     const taskField = document.querySelector("#task-field");
@@ -73,6 +113,7 @@ function createTaskField(e){
         teamTasks += createIndividualTask(task)
     };
     taskField.innerHTML += teamTasks;
+    //document.querySelectorAll(".delete-tasks").addEventListener("click", this.deleteTask())
 }
 
 function createIndividualTask(task){

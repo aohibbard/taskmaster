@@ -150,7 +150,7 @@ document.querySelector(".task-submit").addEventListener("click", addTask);
 function addTask(e){
     //e.preventDefault()
     //change to have target id or wahtever
-    const goopUl = document.querySelector(".team-tasks-3")
+    //const goopUl = document.querySelector(".team-tasks-3")
 
     let taskInputs = document.querySelectorAll("input.task-input");
     let configObj = {

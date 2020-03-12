@@ -15,6 +15,36 @@ class TeamAdapter{
         .then(() => console.log(Team.all))
     }
 
+    createNewTeam(teamObj){
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(teamObj)
+        };
+        fetch(this.baseURL, configObj)
+        .then(res => res.json())
+        .then(team => renderTeam(team))
+        //render to DOM
+    }
+
+    renderTeam(team){
+        const teamField = document.querySelector('#team-container')
+    
+        //let teamTasks = team.tasks.forEach(createTaskField);    
+        teamField.innerHTML = `<div class="team-display" data-id="${this.team.id}">
+            <h2>${this.team.name}</h2>
+    
+            <h4>Our Tasks</h2>
+            <button id="load-tasks">Refresh Tasks</button>
+            <div class="team-tasks-${this.team.id}" id="task-field" data-id="${this.team.id}">
+            </div>
+        </div>`
+        //document.getElementById("load-tasks").addEventListener("click", createTaskField)
+    }
+
     // static fetchGivenTeam(slug){
     //     const teamsURL = "http://localhost:3000/teams/";
 

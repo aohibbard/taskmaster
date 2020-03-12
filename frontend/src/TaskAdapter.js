@@ -18,11 +18,14 @@ class TaskAdapter{
         .then(() => console.log(Task.all))
     }
 
-    deleteTask(e){
-        const chosenTask = e.dataset.id;
-        //const chosenTask = parseInt(document.querySelector(".delete-tasks").dataset.id);
-        fetch(``)
-    }  
+    // deleteTask(e){
+    //     const chosenTask = e.dataset.id;
+    //     //const chosenTask = parseInt(document.querySelector(".delete-tasks").dataset.id);
+    //     fetch(`http://localhost:3000/tasks/${chosenTask}`){
+    //         method: "DELETE"
+    //     };
+        //remove from DOM?
+    // }  
 }
 
 /* document.querySelector(".task-submit").addEventListener("click", addTask);
