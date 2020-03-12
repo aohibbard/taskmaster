@@ -26,7 +26,7 @@ newTaskBtn.addEventListener("click", () => {
     }
 });
 
-//toggle view of add team form
+//Toggle Create Team
 addTeamBtn.addEventListener("click", () => {
     newTeamFormShow = !newTeamFormShow;
     if (newTeamFormShow) {
@@ -52,6 +52,13 @@ function querySpecificTeam(e){
     if (!!teamObj){
         //teamObj.teamAdapter.fetchGivenTeam();
         fetchGivenTeam(teamObj.slug)
+        let teamTasksArr = teamObj.tasks()
+        let teamTasks = '';
+        for (const task of teamTasksArr){
+            teamTasks += createIndividualTask(task)
+        };
+        taskField.innerHTML += teamTasks;
+        //fetch team objects
     } else {
         console.log("Team does not exist")
     }
@@ -96,7 +103,7 @@ function newTeamSubmit(e){
     let teamName = document.querySelector(".add-team-name").value;
     let teamObj = {name: teamName}
     teamsAdapter.createNewTeam(teamObj)
-    
+
     //toggle view so form hides, input clears
 }
 

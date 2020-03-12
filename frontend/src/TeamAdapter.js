@@ -1,4 +1,5 @@
 class TeamAdapter{
+
     constructor(baseURL){
         this.baseURL = baseURL
     }
@@ -16,6 +17,8 @@ class TeamAdapter{
     }
 
     createNewTeam(teamObj){
+        const newTeamForm = document.querySelector('#add-team-form')
+
         let configObj = {
             method: "POST",
             headers: {
@@ -27,7 +30,7 @@ class TeamAdapter{
         fetch(this.baseURL, configObj)
         .then(res => res.json())
         .then(team => renderTeam(team))
-        //render to DOM
+        .then(newTeamForm.style.display = "none")
     }
 
     renderTeam(team){
