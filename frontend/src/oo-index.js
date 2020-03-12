@@ -45,26 +45,34 @@ function fetchGivenTeam(slug){
     //.then(() => renderTeam(team))
 }
 
+//async fetch is causing a problem. figure out a work around
 function renderTeam(team){
     const teamField = document.querySelector('#team-container')
 
-    let teamTasks = team.tasks.forEach(createTaskField);    
+    //let teamTasks = team.tasks.forEach(createTaskField);    
     teamField.innerHTML = `<div class="team-display" data-id="${team.id}">
         <h2>${team.name}</h2>
-        <h2>Our Tasks</h2>
-        <ul class="team-tasks-${team.id}" id="task-field" data-id="${team.id}">
-        <div>${teamTasks}</div>
-        </ul>
+
+        <h4>Our Tasks</h2>
+        <button id="load-tasks">Refresh Tasks</button>
+        <div class="team-tasks-${team.id}" id="task-field" data-id="${team.id}">
+        </div>
     </div>`
-    debugger
+    document.getElementById("load-tasks").addEventListener("click", createTaskField)
 }
 
-function createTaskField(teamTaskArr){
+//This could be in the Task Adapter
+function createTaskField(e){
     const taskField = document.querySelector("#task-field");
+    let targetTeamId = parseInt(e.target.parentNode.dataset.id);
+    let targetTeam = Team.all.find(team => team.id === targetTeamId);
+
+    let teamTasksArr = Task.all.filter(task => task.team_id === targetTeamId)
     let teamTasks = '';
-    for (const task of teamTaskArr){
+    for (const task of teamTasksArr){
         teamTasks += createIndividualTask(task)
     };
+    taskField.innerHTML += teamTasks;
 }
 
 function createIndividualTask(task){
@@ -74,7 +82,7 @@ function createIndividualTask(task){
         <li>Urgency: ${task.urgent}</li>
         <li>Notes: ${task.description}<li>
         <button class="complete" data-id="${task.id}">Complete?</button>
-        <button class ="delete-tasks" data-id="${task.id}">Delete</button>
+        <button class="delete-tasks" data-id="${task.id}">Delete</button>
         <br>
     </div><br>` ; 
 }
