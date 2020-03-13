@@ -27,10 +27,33 @@ class TaskAdapter{
         }
         fetch(this.baseURL, configObj)
         .then(resp => resp.json())
-        .then(newTask => console.log(newTask))
+        .then(newTask => (newTask))
         //append to Dom
         //hide task view
 
+    };
+
+    addTasktoDom(task){
+        const taskField = document.querySelector("#task-field");
+        
+
+    }
+
+    createIndividualTask(task){
+        //conditions for boolean
+        /*if (!!task.dueDate) {
+            let readableDate = Date(task.dueDate)
+        } else { 
+            let readableDate = "No Due Date"}; */
+
+        return `<div class="task" task-data-id="${task.id}">
+            <li>${task.title}</li>
+            <li>Due: due Date here</li>
+            <li>Notes: ${task.description}<li>
+            <button class="complete" data-id="${task.id}">Complete?</button>
+            <button class="delete-tasks" data-id="${task.id}">Delete</button>
+            <br>
+            </div><br>` ; 
     };
 
     // deleteTask(e){
@@ -42,36 +65,3 @@ class TaskAdapter{
         //remove from DOM?
     // }  
 }
-
-/* document.querySelector(".task-submit").addEventListener("click", addTask);
-function addTask(e){
-    //e.preventDefault()
-    //change to have target id or wahtever
-    const goopUl = document.querySelector(".team-tasks-3")
-
-    let taskInputs = document.querySelectorAll("input.task-input");
-    let configObj = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify({
-            "title": taskInputs[0].value,
-            "due_date": taskInputs[1].value,
-            "urgency": taskInputs[2],
-            // this is not reading the checked value
-            "complete": false,
-            "description": taskInputs[4].value,
-            "team_id": 3,
-            // "created_at": ,
-        }),
-    };
-    
-    fetch(TASKS_URL, configObj)
-    .then( res => res.json())
-    .then( newTask => {
-       let taskElement = createIndividualTask(newTask)
-        goopUl.innerHTML += taskElement;
-    });
-}; */

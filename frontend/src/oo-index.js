@@ -96,7 +96,7 @@ function renderTeam(team){
     document.getElementById("load-tasks").addEventListener("click", createTaskField)
 }
 
-// Add New Team
+//ADD NEW TEAM
 createTeamBtn.addEventListener("click", newTeamSubmit)
 
 function newTeamSubmit(e){
@@ -105,6 +105,8 @@ function newTeamSubmit(e){
     teamsAdapter.createNewTeam(teamObj)
 }
 
+
+// ADD TASK
 const addTaskBtn = document.querySelector(".task-submit");
 addTaskBtn.addEventListener("click", newTask)
 function newTask(e){
@@ -114,7 +116,7 @@ function newTask(e){
     let taskObj = {
         'title': taskValues[0].value,
         'dueDate': inputDate,
-        //Date(inputDate)
+        'complete': false,
         'urgency': taskValues[2].checked,
         'description': taskValues[4].value,
         'teamID': currentTeamId
@@ -124,31 +126,21 @@ function newTask(e){
 }
 
 
-//This could be in the Task Adapter
+//This could be in the Task Adapter // Write
 function createTaskField(e){
-    console.log(e)
+    
     const taskField = document.querySelector("#task-field");
     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
-    let targetTeam = Team.all.find(team => team.id === targetTeamId);
+    //let targetTeam = Team.all.find(team => team.id === targetTeamId);
 
-    let teamTasksArr = Task.all.filter(task => task.team_id === targetTeamId)
+    let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId)
     let teamTasks = '';
+
     for (const task of teamTasksArr){
-        teamTasks += createIndividualTask(task)
+        teamTasks += tasksAdapter.createIndividualTask(task)
     };
     taskField.innerHTML += teamTasks;
     //document.querySelectorAll(".delete-tasks").addEventListener("click", this.deleteTask())
 }
 
-// function createIndividualTask(task){
-//     return `<div class="task" task-data-id="${task.id}">
-//         <li>${task.title}</li>
-//         <li>Due: ${task.due_date}</li>
-//         <li>Urgency: ${task.urgent}</li>
-//         <li>Notes: ${task.description}<li>
-//         <button class="complete" data-id="${task.id}">Complete?</button>
-//         <button class="delete-tasks" data-id="${task.id}">Delete</button>
-//         <br>
-//     </div><br>` ; 
-}
 

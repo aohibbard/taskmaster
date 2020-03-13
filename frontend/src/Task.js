@@ -4,10 +4,11 @@ class Task {
 
     static all = [];
 
-    constructor({id, title, due_date, urgency, description, team_id}){
+    constructor({id, title, due_date, complete, urgency, description, team_id}){
         this.id = id
         this.title = title,
         this.dueDate = due_date,
+        this.complete = complete,
         this.urgency = urgency,
         this.description = description,
         this.teamId = team_id
@@ -26,4 +27,5 @@ class Task {
             <button class="delete-tasks" data-id="${this.task.id}">Delete</button>
             <br>
         </div><br>` ; 
+    }
 }
