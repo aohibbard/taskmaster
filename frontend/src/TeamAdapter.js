@@ -31,6 +31,7 @@ class TeamAdapter{
         .then(res => res.json())
         .then(team => renderTeam(team))
         .then(newTeamForm.style.display = "none")
+        //could i persist a variable to be current_user?
     }
 
     renderTeam(team){

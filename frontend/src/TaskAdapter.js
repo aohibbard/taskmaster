@@ -1,5 +1,3 @@
-//basically fetch
-
 class TaskAdapter{
     constructor(baseURL){
         this.baseURL = baseURL;
@@ -17,6 +15,23 @@ class TaskAdapter{
         })
         .then(() => console.log(Task.all))
     }
+
+    addNewTask(taskObj){
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(taskObj)
+        }
+        fetch(this.baseURL, configObj)
+        .then(resp => resp.json())
+        .then(newTask => console.log(newTask))
+        //append to Dom
+        //hide task view
+
+    };
 
     // deleteTask(e){
     //     const chosenTask = e.dataset.id;

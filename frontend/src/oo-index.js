@@ -37,7 +37,7 @@ addTeamBtn.addEventListener("click", () => {
 });
 
 //initiate fetch
-const teamsAdapter = new TeamAdapter("http://localhost:3000/teams")
+const teamsAdapter = new TeamAdapter("http://localhost:3000/teams");
 const tasksAdapter = new TaskAdapter("http://localhost:3000/tasks")
 
 teamsAdapter.fetchTeams()
@@ -50,15 +50,18 @@ function querySpecificTeam(e){
     let searchInput = document.querySelector("#find-team").value; 
     let teamObj = Team.all.find(team => team.name === searchInput)
     if (!!teamObj){
-        //teamObj.teamAdapter.fetchGivenTeam();
         fetchGivenTeam(teamObj.slug)
-        let teamTasksArr = teamObj.tasks()
-        let teamTasks = '';
-        for (const task of teamTasksArr){
-            teamTasks += createIndividualTask(task)
-        };
-        taskField.innerHTML += teamTasks;
-        //fetch team objects
+
+        //THIS WAS TO RENDER TASKS
+        // let teamTasksArr = teamObj.tasks()
+        // let teamTasks = '';
+        // // if (!!teamObj.tasks)
+        // debugger
+        // for (const task of teamTasksArr){
+        //     teamTasks += createIndividualTask(task)
+        // };
+        // taskField.innerHTML += teamTasks;
+        //fetch team objectss
     } else {
         console.log("Team does not exist")
     }
@@ -72,15 +75,12 @@ function fetchGivenTeam(slug){
     .then(team => {
         let parsed = {id: team.data.id, ...team.data.attributes}
         let teamObj = new Team(parsed)
-
-        teamObj.tasks.push(team.data.attributes.tasks)
         renderTeam(teamObj);
     })
     //.then(() => console.log(this.team))
     //.then(() => renderTeam(team))
 }
 
-//async fetch is causing a problem. figure out a work around
 function renderTeam(team){
     const teamField = document.querySelector('#team-container')
 
@@ -103,13 +103,30 @@ function newTeamSubmit(e){
     let teamName = document.querySelector(".add-team-name").value;
     let teamObj = {name: teamName}
     teamsAdapter.createNewTeam(teamObj)
+}
 
-    //toggle view so form hides, input clears
+const addTaskBtn = document.querySelector(".task-submit");
+addTaskBtn.addEventListener("click", newTask)
+function newTask(e){
+    let taskValues = document.querySelectorAll(".task-input");
+    let inputDate = Date.parse(taskValues[1].value);
+    let currentTeamId = parseInt(document.querySelector('.team-display').dataset.id);
+    let taskObj = {
+        'title': taskValues[0].value,
+        'dueDate': inputDate,
+        //Date(inputDate)
+        'urgency': taskValues[2].checked,
+        'description': taskValues[4].value,
+        'teamID': currentTeamId
+    };
+    
+    tasksAdapter.addNewTask(taskObj)
 }
 
 
 //This could be in the Task Adapter
 function createTaskField(e){
+    console.log(e)
     const taskField = document.querySelector("#task-field");
     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
     let targetTeam = Team.all.find(team => team.id === targetTeamId);
@@ -123,15 +140,15 @@ function createTaskField(e){
     //document.querySelectorAll(".delete-tasks").addEventListener("click", this.deleteTask())
 }
 
-function createIndividualTask(task){
-    return `<div class="task" task-data-id="${task.id}">
-        <li>${task.title}</li>
-        <li>Due: ${task.due_date}</li>
-        <li>Urgency: ${task.urgent}</li>
-        <li>Notes: ${task.description}<li>
-        <button class="complete" data-id="${task.id}">Complete?</button>
-        <button class="delete-tasks" data-id="${task.id}">Delete</button>
-        <br>
-    </div><br>` ; 
+// function createIndividualTask(task){
+//     return `<div class="task" task-data-id="${task.id}">
+//         <li>${task.title}</li>
+//         <li>Due: ${task.due_date}</li>
+//         <li>Urgency: ${task.urgent}</li>
+//         <li>Notes: ${task.description}<li>
+//         <button class="complete" data-id="${task.id}">Complete?</button>
+//         <button class="delete-tasks" data-id="${task.id}">Delete</button>
+//         <br>
+//     </div><br>` ; 
 }
 
