@@ -9,11 +9,11 @@ class TaskAdapter{
         .then (tasks => {
             tasks.data.forEach(obj => {
                 let parsed = obj.attributes
-                //new Task(parsed.id, parsed.title, parsed.due_date, parsed.urgency, parsed.description, parsed.team_id)
                 new Task(parsed)
             })
         })
         .then(() => console.log(Task.all))
+        //.then(() => console.log("Tasks successfully loaded"))
     }
 
     addNewTask(taskObj){
@@ -27,7 +27,8 @@ class TaskAdapter{
         }
         fetch(this.baseURL, configObj)
         .then(resp => resp.json())
-        .then(newTask => (newTask))
+        .then(newTask => console.log(newTask))
+        .then(newTeamForm.style.display = "none")
         //append to Dom
         //hide task view
 
@@ -35,7 +36,9 @@ class TaskAdapter{
 
     addTasktoDom(task){
         const taskField = document.querySelector("#task-field");
-        
+        //sort if !complete - append to dom first
+        //sort by due date UTC desc 
+        //if complete 
 
     }
 
@@ -56,12 +59,11 @@ class TaskAdapter{
             </div><br>` ; 
     };
 
-    // deleteTask(e){
-    //     const chosenTask = e.dataset.id;
-    //     //const chosenTask = parseInt(document.querySelector(".delete-tasks").dataset.id);
-    //     fetch(`http://localhost:3000/tasks/${chosenTask}`){
-    //         method: "DELETE"
-    //     };
-        //remove from DOM?
-    // }  
+    deleteTask(task){
+        console.log(task)
+        fetch(this.baseURL + `/${task.id}`, {
+            method: 'DELETE'
+        });
+        //how to dynamically remove JS obj?
+    } 
 }

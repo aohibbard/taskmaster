@@ -49,19 +49,10 @@ findTeamBtn.addEventListener('click', querySpecificTeam)
 function querySpecificTeam(e){
     let searchInput = document.querySelector("#find-team").value; 
     let teamObj = Team.all.find(team => team.name === searchInput)
+    debugger
+
     if (!!teamObj){
         fetchGivenTeam(teamObj.slug)
-
-        //THIS WAS TO RENDER TASKS
-        // let teamTasksArr = teamObj.tasks()
-        // let teamTasks = '';
-        // // if (!!teamObj.tasks)
-        // debugger
-        // for (const task of teamTasksArr){
-        //     teamTasks += createIndividualTask(task)
-        // };
-        // taskField.innerHTML += teamTasks;
-        //fetch team objectss
     } else {
         console.log("Team does not exist")
     }
@@ -77,8 +68,6 @@ function fetchGivenTeam(slug){
         let teamObj = new Team(parsed)
         renderTeam(teamObj);
     })
-    //.then(() => console.log(this.team))
-    //.then(() => renderTeam(team))
 }
 
 function renderTeam(team){
@@ -139,8 +128,18 @@ function createTaskField(e){
     for (const task of teamTasksArr){
         teamTasks += tasksAdapter.createIndividualTask(task)
     };
+
     taskField.innerHTML += teamTasks;
-    //document.querySelectorAll(".delete-tasks").addEventListener("click", this.deleteTask())
+    
+    //event listener not happening
+    document.querySelectorAll(".delete-tasks").forEach(() => addEventListener("click", removeTask));
+}
+
+function removeTask(e){
+    console.log(e)
+    const targetTaskId = parseInt(document.querySelectorAll(".delete-tasks")[2].dataset.id)
+    let targetTask = Task.all.find(task => task.id === targetTaskId)
+    tasksAdapter.deleteTask(targetTask)
 }
 
 
