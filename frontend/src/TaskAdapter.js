@@ -63,7 +63,7 @@ class TaskAdapter{
         console.log(task)
         fetch(this.baseURL + `/${task.id}`, {
             method: 'DELETE'
-        });
-        //how to dynamically remove JS obj?
+        })
+        // .then(task.remove());
     } 
 }

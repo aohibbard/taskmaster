@@ -49,7 +49,6 @@ findTeamBtn.addEventListener('click', querySpecificTeam)
 function querySpecificTeam(e){
     let searchInput = document.querySelector("#find-team").value; 
     let teamObj = Team.all.find(team => team.name === searchInput)
-    debugger
 
     if (!!teamObj){
         fetchGivenTeam(teamObj.slug)
@@ -131,15 +130,18 @@ function createTaskField(e){
 
     taskField.innerHTML += teamTasks;
     
-    //event listener not happening
     document.querySelectorAll(".delete-tasks").forEach(() => addEventListener("click", removeTask));
 }
 
+// should this be an anon function
 function removeTask(e){
-    console.log(e)
+    e.preventDefault();
+    
     const targetTaskId = parseInt(document.querySelectorAll(".delete-tasks")[2].dataset.id)
+    debugger
     let targetTask = Task.all.find(task => task.id === targetTaskId)
-    tasksAdapter.deleteTask(targetTask)
+    //tasksAdapter.deleteTask(targetTask)
+    targetTask.tasksAdapter.deleteTask()
 }
 
 
