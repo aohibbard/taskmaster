@@ -10,10 +10,8 @@
     <h2>Task Master</h2>
     <div id="menu">
         <button type="button" id="add-team">Add Team</button>
-        <button type="button" id="add-task">Add Task</button><br>
-        <label>Find Team</label>
-        <input type="text" name="team" id="find-team"><br>
-        <input type="submit" name="find-team-submit" id="find-team-submit">
+        <!-- <button type="button" id="add-task">Add Task</button><br> -->
+        <button type="button" id="find-team">Find Team</button>
     </div>
 
     <div id="add-team-form" class="toggle-form">
@@ -23,19 +21,29 @@
         <input type="submit" value="Create Team" id="create-team-btn">
     </div>
 
+    <div id="find-team-form" class="toggle-form">
+        <label>Find Team</label>
+        <input type="text" name="team" id="find-team-input"><br>
+        <input type="submit" name="find-team-submit" id="find-team-submit">
+    </div>
+
+
+
+    <div id="team-container">
+
+    </div>
+
+    <!-- this could work well as a pop-up in the future-->
     <div id="task-form" class="toggle-form">
         <p>Add a Task</p>
         <input type="text" name="title" value placeholder="Task Name" class="task-input"><br>
         <input type="text" name="due_date" value placeholder="Needed By Date" class="task-input"><br>
         <label>Urgent?</label>
         <input type="checkbox" name="urgency" value placeholder="false" class="task-input"><br>
-        <input type="hidden" name="complete" class="task-input">
+        <input type="hidden" name="complete" value="false" class="task-input">
         <input type="text" name="description" value placeholder="Describe Task" class="task-input"><br>
         <input type="submit" value="Add Task" class="task-submit">
         <!-- HIDDEN VALUE COULD PROBABLY JUST BE IN JS POST w/ "this"? -->
-    </div>
-
-    <div id="team-container">
     </div>
 
     </main>

@@ -4,4 +4,6 @@ class Team < ApplicationRecord
     
     extend FriendlyId
     friendly_id :name, use: :slugged
+
+    # make team name unique
 end

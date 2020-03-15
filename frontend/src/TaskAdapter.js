@@ -16,6 +16,7 @@ class TaskAdapter{
         //.then(() => console.log("Tasks successfully loaded"))
     }
 
+    //POST TASK
     addNewTask(taskObj){
         let configObj = {
             method: "POST",
@@ -27,43 +28,79 @@ class TaskAdapter{
         }
         fetch(this.baseURL, configObj)
         .then(resp => resp.json())
-        .then(newTask => console.log(newTask))
-        .then(newTeamForm.style.display = "none")
-        //append to Dom
-        //hide task view
+        .then(task => {
+            let newTask = new Task(task)
+            newTask.updateAllTasks() 
+        })
+        .then(!taskFormShow)
+        //this might have to become a named function
+        //need to change this to toggle off, not 
 
     };
 
-    addTasktoDom(task){
-        const taskField = document.querySelector("#task-field");
-        //sort if !complete - append to dom first
-        //sort by due date UTC desc 
-        //if complete 
-
-    }
-
     createIndividualTask(task){
-        //conditions for boolean
-        /*if (!!task.dueDate) {
-            let readableDate = Date(task.dueDate)
-        } else { 
-            let readableDate = "No Due Date"}; */
-
+        if (!task.complete) {
         return `<div class="task" task-data-id="${task.id}">
-            <li>${task.title}</li>
-            <li>Due: due Date here</li>
-            <li>Notes: ${task.description}<li>
+            <h4>${task.title}</h4>
+            <p>Due: due Date here</p>
+            <p>Notes: ${task.description}<p>
             <button class="complete" data-id="${task.id}">Complete?</button>
             <button class="delete-tasks" data-id="${task.id}">Delete</button>
             <br>
             </div><br>` ; 
+        } else {
+            return `<div class="task" task-data-id="${task.id}">
+            <h4>${task.title}</h4>
+            <p>Due: due Date here</p>
+            <p>Notes: ${task.description}<p>
+            <button class="delete-tasks" data-id="${task.id}">Delete</button>
+            <br>
+            </div><br>`
+        }
     };
 
+    //COMPLETE PATCH
+    markComplete(task){
+        //const updateDom = new Task.updateAllTasks(parsed)
+
+        let configObj = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(task)
+        };
+        fetch(this.baseURL + `/${task.id}`, configObj)
+        .then(res => res.json())
+        .then(task => {
+            let parsed = task.data.attributes
+            let completed = new Task(parsed)
+            //set Task status then trigger re-render of DOM
+            updateAllTasks(completed)
+        })
+    }
+
+    static updateAllTasks(task){
+        const taskField = document.getElementById("task-field")
+        let targetTeamId = task.teamId;
+        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
+        let taskArr = ''
+        debugger
+        for (const task of teamTasks){
+            taskArr += task.createIndividualTask()
+        }
+        taskField.innerHTML = taskArr;
+        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
+        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
+    }
+
     deleteTask(task){
-        console.log(task)
-        fetch(this.baseURL + `/${task.id}`, {
+        const targetTaskId = parseInt(task.lastElementChild.firstElementChild.dataset.id)
+        fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
         })
-        // .then(task.remove());
+        .then(task.remove())
+        //has to go into Task class and remove it
     } 
 }

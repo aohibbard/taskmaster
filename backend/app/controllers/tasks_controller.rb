@@ -28,11 +28,14 @@ class TasksController < ApplicationController
     end 
 
     def update 
+        task = Task.find_by(id: params[:id])
+        task.update(complete: params[:complete])
+        task.save
+        render json: TaskSerializer.new(task)
     end 
 
     def destroy 
         task = Task.find_by(id: params[:id])
-        # binding.pry
         task.destroy
         render json: task
     end 
