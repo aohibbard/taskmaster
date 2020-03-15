@@ -49,40 +49,43 @@ findTeamBtn.addEventListener('click', querySpecificTeam)
 function querySpecificTeam(e){
     let searchInput = document.querySelector("#find-team").value; 
     let teamObj = Team.all.find(team => team.name === searchInput)
-
+    console.log(e)
     if (!!teamObj){
-        fetchGivenTeam(teamObj.slug)
+        teamsAdapter.fetchGivenTeam(teamObj.slug)
     } else {
         console.log("Team does not exist")
     }
 };
 
-function fetchGivenTeam(slug){
-    const teamsURL = "http://localhost:3000/teams/";
 
-    fetch(teamsURL + slug)
-    .then(res => res.json())
-    .then(team => {
-        let parsed = {id: team.data.id, ...team.data.attributes}
-        let teamObj = new Team(parsed)
-        renderTeam(teamObj);
-    })
-}
+//DELETE NOW IN TEAM ADAPTER
+// function fetchGivenTeam(slug){
+//     const teamsURL = "http://localhost:3000/teams/";
 
-function renderTeam(team){
-    const teamField = document.querySelector('#team-container')
+//     fetch(teamsURL + slug)
+//     .then(res => res.json())
+//     .then(team => {
+//         let parsed = {id: team.data.id, ...team.data.attributes}
+//         let teamObj = new Team(parsed)
+//         //teamsAdapter.renderTeam(teamObj);
+//         renderTeam(teamObj);
+//     })
+// }
 
-    //let teamTasks = team.tasks.forEach(createTaskField);    
-    teamField.innerHTML = `<div class="team-display" data-id="${team.id}">
-        <h2>${team.name}</h2>
+// function renderTeam(team){
+//     const teamField = document.querySelector('#team-container')
 
-        <h4>Our Tasks</h2>
-        <button id="load-tasks">Refresh Tasks</button>
-        <div class="team-tasks-${team.id}" id="task-field" data-id="${team.id}">
-        </div>
-    </div>`
-    document.getElementById("load-tasks").addEventListener("click", createTaskField)
-}
+//     //let teamTasks = team.tasks.forEach(createTaskField);    
+//     teamField.innerHTML = `<div class="team-display" data-id="${team.id}">
+//         <h2>${team.name}</h2>
+
+//         <h4>Our Tasks</h2>
+//         <button id="load-tasks">Refresh Tasks</button>
+//         <div class="team-tasks-${team.id}" id="task-field" data-id="${team.id}">
+//         </div>
+//     </div>`
+//     document.getElementById("load-tasks").addEventListener("click", createTaskField)
+// }
 
 //ADD NEW TEAM
 createTeamBtn.addEventListener("click", newTeamSubmit)
@@ -136,9 +139,8 @@ function createTaskField(e){
 // should this be an anon function
 function removeTask(e){
     e.preventDefault();
-    
+
     const targetTaskId = parseInt(document.querySelectorAll(".delete-tasks")[2].dataset.id)
-    debugger
     let targetTask = Task.all.find(task => task.id === targetTaskId)
     //tasksAdapter.deleteTask(targetTask)
     targetTask.tasksAdapter.deleteTask()

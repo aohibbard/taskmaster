@@ -31,7 +31,6 @@ class TeamAdapter{
         .then(res => res.json())
         .then(team => renderTeam(team))
         .then(newTeamForm.style.display = "none")
-        //could i persist a variable to be current_user?
     }
 
     renderTeam(team){
@@ -49,40 +48,36 @@ class TeamAdapter{
         //document.getElementById("load-tasks").addEventListener("click", createTaskField)
     }
 
-    // static fetchGivenTeam(slug){
-    //     const teamsURL = "http://localhost:3000/teams/";
+    fetchGivenTeam(slug){
+        const teamsURL = "http://localhost:3000/teams/";
+        fetch(this.baseURL + "/" + slug)
+        .then(res => res.json())
+        .then(team => {
+            let parsed = {id: team.data.id, ...team.data.attributes}
+            let teamObj = new Team(parsed)
+            teamObj.renderTeam()
+            // Team.renderTeam(teamObj)
+            //teamObj.renderTeam()
+            //teamsAdapter.renderTeam(teamObj);
+        })
+    }
 
-    //     fetch(teamsURL + slug)
-    //     .then(res => res.json())
-    //     .then(team => {
-    //         let parsed = {id: team.data.id, ...team.data.attributes}
-    //         let teamObj = new Team(parsed)
-    //         teamObj.tasks.push(team.data.attributes.tasks)
-    //         teamObj.renderTeam();
-    //     })
-    //     //.then(() => console.log(this.team))
-    //     //.then(() => renderTeam(team))
-    // }
-
-    // // make static
-    // renderTeam(team){
-    //     const teamField = document.querySelector('#team-container')
-    //     let teamTasks = createTaskField(team.tasks)
-    //     teamField.innerHTML += `<div class="team-display" data-id="${team.id}">
-    //         <h2>${team.name}</h2>
-    //         <h2>Our Tasks</h2>
-    //         <ul class="team-tasks-${team.id}" data-id="${team.id}">
-    //             ${teamTasks}
-    //         </ul>
-    //     </div>`
-    // }
-
-    // static createTaskField(){
-    //     let teamTasks = '';
-    //     for (const task of taskList){
-    //         teamTasks += createIndividualTask(task)
-    //     };
-    //     return teamTasks;
-    // }
+    createTaskField(e){
+    
+        const taskField = document.querySelector("#task-field");
+        let targetTeamId = parseInt(e.target.parentNode.dataset.id);
+        //let targetTeam = Team.all.find(team => team.id === targetTeamId);
+    
+        let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId)
+        let teamTasks = '';
+    
+        for (const task of teamTasksArr){
+            teamTasks += tasksAdapter.createIndividualTask(task)
+        };
+    
+        taskField.innerHTML += teamTasks;
+        
+        document.querySelectorAll(".delete-tasks").forEach(() => addEventListener("click", removeTask));
+    }
 
 }
