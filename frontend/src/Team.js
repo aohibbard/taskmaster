@@ -19,7 +19,7 @@ class Team{
     
             <h4>Our Tasks</h2>
             <button id="load-tasks">Refresh Tasks</button>
-            <button type="button" id="add-task">Add Task</button>
+            <button type="button" id="add-task">Add Task</button><br>
             <div class="team-tasks-${this.id}" id="task-field" data-id="${this.id}">
             </div>
         </div>`

@@ -17,6 +17,7 @@ class Task {
     }
 
     updateAllTasks(){
+
         const taskField = document.getElementById("task-field")
         let targetTeamId = this.teamId;
         let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
@@ -31,19 +32,21 @@ class Task {
     }
 
     createTaskForDom(){
+        let dueOn = parseInt(this.dueDate)
+        let showDate = new Date(dueOn)
+
         if (!this.complete) {
         return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
-            <p>Due: due Date here</p>
+            <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
-            <button class="complete" data-id="${this.id}">Complete?</button><br>
-            <button class="delete-tasks" data-id="${this.id}">Delete</button>
+            <p><button class="complete" data-id="${this.id}">Complete</button>   <button class="delete-tasks" data-id="${this.id}">Delete</button></p>
             <br>
             </div><br>` ; 
         } else {
             return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
-            <p>Due: due Date here</p>
+            <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
             <button class="delete-tasks" data-id="${this.id}">Delete</button>
             <br>

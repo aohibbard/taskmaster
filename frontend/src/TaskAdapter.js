@@ -31,20 +31,25 @@ class TaskAdapter{
         fetch(this.baseURL, configObj)
         .then(resp => resp.json())
         .then(task => {
-            task.updateAllTasks() 
+            let newTask = new Task(task)
+            debugger
+            newTask.updateAllTasks()
         })
         .then(form.reset())
-        .then(toggleAddTask())
         //this might have to become a named function
         //need to change this to toggle off, not 
 
     };
 
+
     createIndividualTask(task){
+        let dueOn = parseInt(task.dueDate)
+        let showDate = new Date(dueOn)
+        
         if (!task.complete) {
         return `<div class="task" task-data-id="${task.id}">
             <h4>${task.title}</h4>
-            <p>Due: due Date here</p>
+            <p>Due: ${showDate} </p>
             <p>Notes: ${task.description}<p>
             <button class="complete" data-id="${task.id}">Complete?</button>
             <button class="delete-tasks" data-id="${task.id}">Delete</button>
@@ -53,7 +58,7 @@ class TaskAdapter{
         } else {
             return `<div class="task" task-data-id="${task.id}">
             <h4>${task.title}</h4>
-            <p>Due: due Date here</p>
+            <p>Due: ${showDate} </p>
             <p>Notes: ${task.description}<p>
             <button class="delete-tasks" data-id="${task.id}">Delete</button>
             <br>
@@ -85,20 +90,6 @@ class TaskAdapter{
             completed.updateAllTasks();
         })
     }
-
-    /*static updateAllTasks(task){
-        const taskField = document.getElementById("task-field")
-        let targetTeamId = task.teamId;
-        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
-        let taskArr = ''
-        debugger
-        for (const task of teamTasks){
-            taskArr += task.createIndividualTask()
-        }
-        taskField.innerHTML = taskArr;
-        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-    }*/
 
     deleteTask(task){
         const targetTaskId = parseInt(task.lastElementChild.firstElementChild.dataset.id)
