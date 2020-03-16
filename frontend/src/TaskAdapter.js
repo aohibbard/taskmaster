@@ -18,6 +18,8 @@ class TaskAdapter{
 
     //POST TASK
     addNewTask(taskObj){
+        const form = document.querySelector(".add-task-form")
+
         let configObj = {
             method: "POST",
             headers: {
@@ -29,10 +31,10 @@ class TaskAdapter{
         fetch(this.baseURL, configObj)
         .then(resp => resp.json())
         .then(task => {
-            let newTask = new Task(task)
-            newTask.updateAllTasks() 
+            task.updateAllTasks() 
         })
-        .then(!taskFormShow)
+        .then(form.reset())
+        .then(toggleAddTask())
         //this might have to become a named function
         //need to change this to toggle off, not 
 
@@ -72,16 +74,19 @@ class TaskAdapter{
             body: JSON.stringify(task)
         };
         fetch(this.baseURL + `/${task.id}`, configObj)
+        .then(document.getElementById("task-field").innerHTML = '')
         .then(res => res.json())
         .then(task => {
             let parsed = task.data.attributes
+
+            //remove old Element From DOM
+
             let completed = new Task(parsed)
-            //set Task status then trigger re-render of DOM
-            updateAllTasks(completed)
+            completed.updateAllTasks();
         })
     }
 
-    static updateAllTasks(task){
+    /*static updateAllTasks(task){
         const taskField = document.getElementById("task-field")
         let targetTeamId = task.teamId;
         let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
@@ -93,10 +98,12 @@ class TaskAdapter{
         taskField.innerHTML = taskArr;
         document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
         document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-    }
+    }*/
 
     deleteTask(task){
         const targetTaskId = parseInt(task.lastElementChild.firstElementChild.dataset.id)
+        const targetTask = Task.all.find(task => task.id === targetTaskId)
+
         fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
         })

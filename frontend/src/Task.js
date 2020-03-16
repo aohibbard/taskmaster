@@ -32,16 +32,16 @@ class Task {
 
     createTaskForDom(){
         if (!this.complete) {
-        return `<div class="task" data-id="${this.id}">
+        return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
             <p>Due: due Date here</p>
             <p>Notes: ${this.description}<p>
-            <button class="complete" data-id="${this.id}">Complete?</button>
+            <button class="complete" data-id="${this.id}">Complete?</button><br>
             <button class="delete-tasks" data-id="${this.id}">Delete</button>
             <br>
             </div><br>` ; 
         } else {
-            return `<div class="task" task-id="${this.id}">
+            return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
             <p>Due: due Date here</p>
             <p>Notes: ${this.description}<p>
@@ -50,6 +50,10 @@ class Task {
             </div><br>`
         }
     };
+
+    set taskComplete(status=true){
+        this.complete = status;
+    }
 
     //set task status
 

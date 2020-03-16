@@ -97,6 +97,8 @@ function newTeamSubmit(e){
 const addTaskBtn = document.querySelector(".task-submit");
 addTaskBtn.addEventListener("click", newTask)
 function newTask(e){
+    e.preventDefault();
+    
     let taskValues = document.querySelectorAll(".task-input");
     let inputDate = Date.parse(taskValues[1].value);
     let currentTeamId = parseInt(document.querySelector('.team-display').dataset.id);

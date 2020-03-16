@@ -1,3 +1,72 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+/* --- Welcome Page Styles --- */
+body {
+  background-color: #dfe3dc;
+  color: #333;
+  font-family: Roboto;
+  line-height: 18px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 54px;
+}
+
+h2 {
+  border-bottom: 2px solid #ccc;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 36px;
+}
+
+p {
+  margin-bottom: 18px;
+}
+
+a:link{
+  color: black;
+}
+
+button, input[type=submit] {
+  background-color: purple;
+  border: none;
+  color: black;
+  padding:  padding:0.35em 1.2em;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+button:hover {
+  opacity: 0.6;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
 .toggle-form {
     padding: 1rem;
     width: stretch;

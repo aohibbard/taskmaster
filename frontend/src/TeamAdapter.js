@@ -47,5 +47,4 @@ class TeamAdapter{
         })
         .then(document.getElementById("find-team-form").style.display = "none")
     }
-
 }

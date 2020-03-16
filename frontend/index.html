@@ -7,8 +7,9 @@
 <body>
 <main>
 
-    <h2>Task Master</h2>
     <div id="menu">
+    <h2>Task Master</h2>
+
         <button type="button" id="add-team">Add Team</button>
         <!-- <button type="button" id="add-task">Add Task</button><br> -->
         <button type="button" id="find-team">Find Team</button>
@@ -36,6 +37,7 @@
     <!-- this could work well as a pop-up in the future-->
     <div id="task-form" class="toggle-form">
         <p>Add a Task</p>
+        <form class="add-task-form">
         <input type="text" name="title" value placeholder="Task Name" class="task-input"><br>
         <input type="text" name="due_date" value placeholder="Needed By Date" class="task-input"><br>
         <label>Urgent?</label>
@@ -44,6 +46,7 @@
         <input type="text" name="description" value placeholder="Describe Task" class="task-input"><br>
         <input type="submit" value="Add Task" class="task-submit">
         <!-- HIDDEN VALUE COULD PROBABLY JUST BE IN JS POST w/ "this"? -->
+        </form>
     </div>
 
     </main>
