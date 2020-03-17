@@ -44,7 +44,8 @@ class TaskAdapter{
 
     createIndividualTask(task){
         let dueOn = parseInt(task.dueDate)
-        let showDate = new Date(dueOn)
+        let dateToS = new Date(dueOn)
+        let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
         
         if (!task.complete) {
         return `<div class="task" task-data-id="${task.id}">

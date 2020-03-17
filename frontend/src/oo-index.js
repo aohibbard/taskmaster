@@ -81,8 +81,6 @@ function querySpecificTeam(e){
     }
 };
 
-
-
 //ADD NEW TEAM
 createTeamBtn.addEventListener("click", newTeamSubmit)
 
@@ -114,6 +112,7 @@ function newTask(e){
     tasksAdapter.addNewTask(taskObj)
 }
 
+//all of this should be routed to Task class
 function createTaskField(e){
     const taskField = document.querySelector("#task-field");
     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
@@ -132,7 +131,6 @@ function createTaskField(e){
     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
 }
 
-// should this be an anon function
 function removeTask(e){
     e.preventDefault();
     const targetTaskId = parseInt(e.target.dataset.id)
@@ -140,7 +138,6 @@ function removeTask(e){
     const parentDiv = (e.target.parentElement).parentElement
     
     tasksAdapter.deleteTask(parentDiv)
-    // targetTask.tasksAdapter.deleteTask()
 }
 
 function completeStatus(e){

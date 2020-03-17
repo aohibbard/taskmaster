@@ -32,9 +32,9 @@ class Task {
     }
 
     createTaskForDom(){
-        let dueOn = parseInt(this.dueDate)
-        let showDate = new Date(dueOn)
-
+        let dueOn = parseInt(task.dueDate)
+        let dateToS = new Date(dueOn)
+        let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
         if (!this.complete) {
         return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
@@ -57,7 +57,5 @@ class Task {
     set taskComplete(status=true){
         this.complete = status;
     }
-
-    //set task status
 
 }

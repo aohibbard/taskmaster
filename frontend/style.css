@@ -105,6 +105,10 @@ input[type=text], input[type=password], input[type=email] {
     grid-column-gap: 60px;
     grid-row-gap: 10px;
   } */
+
+  #task-field{
+    margin: 2rem;
+  }
         
 
   .task{
@@ -112,15 +116,17 @@ input[type=text], input[type=password], input[type=email] {
     margin-right: auto;
     width: 8em;
 
-    /*grid-column-gap: 60px;
+    grid-column-gap: 60px;
     grid-row-gap: 10px;
-    border: solid; */
+    border: solid;
     line-height: 1;
     background-color: white;
     width: 275px;
     border: 0;
     height: 225;
-    padding: 20px;
+    /* padding: 20px; */
+    padding: 1rem
     box-sizing: border-box;
     display: inline-grid;
+    margin: 1rem 2rem;
   }
