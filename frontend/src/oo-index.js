@@ -118,9 +118,8 @@ function createTaskField(e){
     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
     //let targetTeam = Team.all.find(team => team.id === targetTeamId);
 
-    let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId)
+    let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
     let teamTasks = '';
-
 
     for (const task of teamTasksArr){
         teamTasks += tasksAdapter.createIndividualTask(task)

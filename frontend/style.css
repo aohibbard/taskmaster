@@ -125,8 +125,8 @@ input[type=text], input[type=password], input[type=email] {
     border: 0;
     height: 225;
     /* padding: 20px; */
-    padding: 1rem
-    box-sizing: border-box;
+    padding: 2rem;
+    /* box-sizing: border-box; */
     display: inline-grid;
     margin: 1rem 2rem;
   }
