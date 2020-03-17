@@ -46,7 +46,7 @@ class TaskAdapter{
         let dueOn = parseInt(task.dueDate)
         let dateToS = new Date(dueOn)
         let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
-        
+
         if (!task.complete) {
         return `<div class="task" task-data-id="${task.id}">
             <h4>${task.title}</h4>
@@ -99,7 +99,10 @@ class TaskAdapter{
         fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
         })
-        .then(task.remove())
+        .then(() => {
+            Task.all = Task.all.filter(taskObj => taskObj.id !== targetTaskId)
+            task.remove()
+        })
         //has to go into Task class and remove it
     } 
 }
