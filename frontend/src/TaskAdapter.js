@@ -47,8 +47,8 @@ class TaskAdapter{
         let dateToS = new Date(dueOn)
         let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
 
-        if (!task.complete) {
-        return `<div class="task" task-data-id="${task.id}">
+        if (!task.complete && !task.urgency) {
+        return `<div class="task" task-data-id="${task.id}" style="background-color:white">
             <h4>${task.title}</h4>
             <p>Due: ${showDate} </p>
             <p>Notes: ${task.description}<p>
@@ -56,8 +56,17 @@ class TaskAdapter{
             <button class="delete-tasks" data-id="${task.id}">Delete</button>
             <br>
             </div><br>` ; 
+        } else if (!task.complete && !!task.urgency){
+            return `<div class="task" task-data-id="${task.id}" style="background-color:lemonchiffon">
+            <h4>${task.title}</h4>
+            <p>Due: ${showDate} </p>
+            <p>Notes: ${task.description}<p>
+            <button class="complete" data-id="${task.id}">Complete?</button>
+            <button class="delete-tasks" data-id="${task.id}">Delete</button>
+            <br>
+            </div><br>` ;
         } else {
-            return `<div class="task" task-data-id="${task.id}">
+            return `<div class="task" task-data-id="${task.id}" style="background-color:white">
             <h4>${task.title}</h4>
             <p>Due: ${showDate} </p>
             <p>Notes: ${task.description}<p>

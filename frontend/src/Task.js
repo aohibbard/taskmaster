@@ -21,16 +21,25 @@ class Task {
         let dateToS = new Date(dueOn)
         let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
 
-        if (!this.complete) {
-        return `<div class="task" id="task-${this.id}" data-id="${this.id}">
+        if (!this.complete && !this.urgency) {
+        return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white">
             <h4>${this.title}</h4>
             <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
             <p><button class="complete" data-id="${this.id}">Complete</button>   <button class="delete-tasks" data-id="${this.id}">Delete</button></p>
             <br>
             </div><br>` ; 
+        } else if (!this.complete && !!this.urgency) {
+            return `<div class="task" task-data-id="${this.id}" style="background-color:lemonchiffon">
+            <h4>${this.title}</h4>
+            <p>Due: ${showDate} </p>
+            <p>Notes: ${this.description}<p>
+            <button class="complete" data-id="${this.id}">Complete?</button>
+            <button class="delete-tasks" data-id="${this.id}">Delete</button>
+            <br>
+            </div><br>` ;
         } else {
-            return `<div class="task" id="task-${this.id}" data-id="${this.id}">
+            return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white">
             <h4>${this.title}</h4>
             <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
