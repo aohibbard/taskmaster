@@ -51,8 +51,6 @@ class Task {
         for (const task of teamTasks){
             taskArr += task.createTaskForDom()
         }
-        debugger
-
         taskField.innerHTML = taskArr;
         document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
         document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));

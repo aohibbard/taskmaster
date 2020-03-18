@@ -87,9 +87,6 @@ const addTaskBtn = document.querySelector(".task-submit");
 addTaskBtn.addEventListener("click", newTask)
 function newTask(e){
     e.preventDefault();
-
-    const form = document.querySelector(".add-task-form")
-
     
     let taskValues = document.querySelectorAll(".task-input");
     let inputDate = Date.parse(taskValues[1].value);
@@ -104,7 +101,6 @@ function newTask(e){
     };
     
     tasksAdapter.addNewTask(taskObj)
-    form.reset
 }
 
 //all of this should be routed to Task class

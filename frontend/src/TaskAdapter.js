@@ -18,6 +18,9 @@ class TaskAdapter{
 
     //POST TASK
     addNewTask(taskObj){
+
+        const form = document.querySelector(".add-task-form")
+
         let configObj = {
             method: "POST",
             headers: {
@@ -31,6 +34,7 @@ class TaskAdapter{
         .then(task => {
             let newTask = new Task(task)
             newTask.updateAllTasks();
+            form.reset()
         })
         //.then(form.reset)
         //need to change this to toggle off 
@@ -66,7 +70,7 @@ class TaskAdapter{
     //COMPLETE PATCH
     markComplete(task){
         //const updateDom = new Task.updateAllTasks(parsed)
-
+        
         let configObj = {
             method: "PATCH",
             headers: {
@@ -91,7 +95,6 @@ class TaskAdapter{
     deleteTask(task){
         const targetTaskId = parseInt(task.lastElementChild.firstElementChild.dataset.id)
         const targetTask = Task.all.find(task => task.id === targetTaskId)
-
         fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
         })
