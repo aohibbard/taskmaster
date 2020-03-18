@@ -16,27 +16,11 @@ class Task {
         Task.all.push(this)
     }
 
-    updateAllTasks(){
-
-        const taskField = document.getElementById("task-field")
-        let targetTeamId = this.teamId;
-        // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
-        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-        
-        let taskArr = ''
-        for (const task of teamTasks){
-            taskArr += task.createTaskForDom()
-        }
-
-        taskField.innerHTML = taskArr;
-        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-    }
-
     createTaskForDom(){
-        let dueOn = parseInt(task.dueDate)
+        let dueOn = parseInt(this.dueDate)
         let dateToS = new Date(dueOn)
         let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
+
         if (!this.complete) {
         return `<div class="task" id="task-${this.id}" data-id="${this.id}">
             <h4>${this.title}</h4>
@@ -55,6 +39,24 @@ class Task {
             </div><br>`
         }
     };
+
+    updateAllTasks(){
+
+        const taskField = document.getElementById("task-field")
+        let targetTeamId = this.teamId;
+        // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
+        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
+        let taskArr = ''
+
+        for (const task of teamTasks){
+            taskArr += task.createTaskForDom()
+        }
+        debugger
+
+        taskField.innerHTML = taskArr;
+        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
+        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
+    }
 
     set taskComplete(status=true){
         this.complete = status;

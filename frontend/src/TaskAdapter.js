@@ -13,13 +13,11 @@ class TaskAdapter{
             })
         })
         .then(() => console.log(Task.all))
-        //.then(() => console.log("Tasks successfully loaded"))
+        //.then(() => console.log("Tasks loaded"))
     }
 
     //POST TASK
     addNewTask(taskObj){
-        const form = document.querySelector(".add-task-form")
-
         let configObj = {
             method: "POST",
             headers: {
@@ -32,12 +30,10 @@ class TaskAdapter{
         .then(resp => resp.json())
         .then(task => {
             let newTask = new Task(task)
-            debugger
-            newTask.updateAllTasks()
+            newTask.updateAllTasks();
         })
-        .then(form.reset())
-        //this might have to become a named function
-        //need to change this to toggle off, not 
+        //.then(form.reset)
+        //need to change this to toggle off 
 
     };
 
@@ -72,7 +68,7 @@ class TaskAdapter{
         //const updateDom = new Task.updateAllTasks(parsed)
 
         let configObj = {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json"
@@ -80,15 +76,15 @@ class TaskAdapter{
             body: JSON.stringify(task)
         };
         fetch(this.baseURL + `/${task.id}`, configObj)
-        .then(document.getElementById("task-field").innerHTML = '')
         .then(res => res.json())
         .then(task => {
             let parsed = task.data.attributes
 
-            //remove old Element From DOM
+            let targetTask = Task.all.find(task => task.id === parsed.id)
+            targetTask.complete = true;
+            targetTask.updateAllTasks()
+            //  .then(document.getElementById("task-field").innerHTML = '')
 
-            let completed = new Task(parsed)
-            completed.updateAllTasks();
         })
     }
 
@@ -101,8 +97,8 @@ class TaskAdapter{
         })
         .then(() => {
             Task.all = Task.all.filter(taskObj => taskObj.id !== targetTaskId)
+            //Effectively, delete Task from Task.all by saying Task.all === everything except deleted task
             task.remove()
         })
-        //has to go into Task class and remove it
     } 
 }

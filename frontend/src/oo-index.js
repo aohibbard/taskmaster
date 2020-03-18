@@ -20,15 +20,6 @@ const createTeamBtn = document.querySelector("#create-team-btn");
 
 
 //Toggle Create Task
-/*newTaskBtn.addEventListener("click", () => {
-    taskFormShow = !taskFormShow; 
-    if (taskFormShow) {
-       taskForm.style.display = "block";
-    } else {
-        taskForm.style.display = "none";
-    }
-}); */
-
 function toggleAddTask(e){
     e.preventDefault()
     taskFormShow = !taskFormShow; 
@@ -67,6 +58,7 @@ const tasksAdapter = new TaskAdapter("http://localhost:3000/tasks")
 teamsAdapter.fetchTeams()
 tasksAdapter.fetchTasks()
 
+//FindSpecificTeam
 const findTeamBtn = document.querySelector("#find-team-submit");
 findTeamBtn.addEventListener('click', querySpecificTeam)
 
@@ -88,14 +80,16 @@ function newTeamSubmit(e){
     let teamName = document.querySelector(".add-team-name").value;
     let teamObj = {name: teamName}
     teamsAdapter.createNewTeam(teamObj)
-}
+};
 
-
-// ADD TASK
+//ADD TASK
 const addTaskBtn = document.querySelector(".task-submit");
 addTaskBtn.addEventListener("click", newTask)
 function newTask(e){
     e.preventDefault();
+
+    const form = document.querySelector(".add-task-form")
+
     
     let taskValues = document.querySelectorAll(".task-input");
     let inputDate = Date.parse(taskValues[1].value);
@@ -110,6 +104,7 @@ function newTask(e){
     };
     
     tasksAdapter.addNewTask(taskObj)
+    form.reset
 }
 
 //all of this should be routed to Task class
