@@ -44,6 +44,13 @@ class TeamAdapter{
             let parsed = {id: team.data.id, ...team.data.attributes}
             let teamObj = new Team(parsed)
             teamObj.renderTeam(); 
+
+            if (team.data.attributes.tasks.length){
+
+                let task = Task.all.find(task => task.teamId === teamObj.id)
+                task.updateAllTasks();
+            }
+            
         })
         .then(document.getElementById("find-team-form").style.display = "none")
     }

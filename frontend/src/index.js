@@ -1,3 +1,8 @@
+//THIS IS NOT USED. IT IS A PERSONAL REFERENCE FOR A MOSTLY FUNCTIONAL FUNCTIONAL BUILD OF THE SITE
+
+
+
+
 //class AppendHelper
 
 let taskFormShow = false;

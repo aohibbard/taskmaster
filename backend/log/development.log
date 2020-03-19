@@ -27240,3 +27240,803 @@ Processing by TeamsController#show as */*
 Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 1.1ms | Allocations: 2960)
 
 
+Started GET "/tasks" for ::1 at 2020-03-18 19:54:34 -0400
+Started GET "/teams" for ::1 at 2020-03-18 19:54:34 -0400
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[35m (28.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (1.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (64.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 220ms (Views: 89.2ms | ActiveRecord: 109.2ms | Allocations: 20000)
+
+
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 367ms (Views: 138.7ms | ActiveRecord: 210.9ms | Allocations: 41755)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 19:54:42 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (2.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 16ms (Views: 9.1ms | ActiveRecord: 3.0ms | Allocations: 3126)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:41:05 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:41:05 -0400
+  [1m[35m (11.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TeamsController#index as */*
+  [1m[35m (38.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as */*
+  [1m[36mTeam Load (63.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (45.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 246ms (Views: 21.9ms | ActiveRecord: 213.9ms | Allocations: 24145)
+
+
+  [1m[36mTask Load (19.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 410ms (Views: 242.1ms | ActiveRecord: 146.3ms | Allocations: 45238)
+
+
+Started GET "/teams/new-team" for ::1 at 2020-03-18 20:41:08 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"new-team"}
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "new-team"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 17ms (Views: 8.6ms | ActiveRecord: 4.0ms | Allocations: 3932)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:44:11 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:44:11 -0400
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 1.0ms | Allocations: 7863)
+
+
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (8.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (52.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (6.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (20.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (16.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 255ms (Views: 141.8ms | ActiveRecord: 112.7ms | Allocations: 20097)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:44:17 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 18ms (Views: 10.9ms | ActiveRecord: 1.7ms | Allocations: 2962)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:45:35 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:45:35 -0400
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (10.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (50.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (10.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 14.3ms | ActiveRecord: 10.5ms | Allocations: 8832)
+
+
+  [1m[36mTask Load (16.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (13.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (14.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (13.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (6.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (30.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (5.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (25.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (17.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 277ms (Views: 67.1ms | ActiveRecord: 209.0ms | Allocations: 28739)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:45:42 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 2.6ms | Allocations: 2961)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:46:49 -0400
+Processing by TeamsController#index as */*
+Started GET "/tasks" for ::1 at 2020-03-18 20:46:49 -0400
+  [1m[36mTeam Load (47.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (38.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (19.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (16.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 28ms (Views: 10.9ms | ActiveRecord: 16.5ms | Allocations: 8903)
+
+
+  [1m[36mTask Load (15.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 225ms (Views: 88.0ms | ActiveRecord: 136.7ms | Allocations: 29081)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:46:56 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (4.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 18ms (Views: 8.1ms | ActiveRecord: 6.3ms | Allocations: 2961)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:47:46 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:47:46 -0400
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (20.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (38.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 51ms (Views: 12.3ms | ActiveRecord: 38.2ms | Allocations: 7863)
+
+
+  [1m[36mTask Load (79.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (7.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 176ms (Views: 54.2ms | ActiveRecord: 121.8ms | Allocations: 28717)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:47:52 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 22ms (Views: 5.5ms | ActiveRecord: 1.7ms | Allocations: 2964)
+
+
+Started POST "/teams" for ::1 at 2020-03-18 20:52:11 -0400
+Processing by TeamsController#create as JSON
+  Parameters: {"name"=>"CDC", "team"=>{"name"=>"CDC"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[36mTeam Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "teams" WHERE "teams"."id" IS NOT NULL AND "teams"."slug" = $1 LIMIT $2[0m  [["slug", "cdc"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[36mTeam Create (6.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "slug") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "CDC"], ["created_at", "2020-03-19 00:52:11.867860"], ["updated_at", "2020-03-19 00:52:11.867860"], ["slug", "cdc"]]
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+Completed 200 OK in 116ms (Views: 0.5ms | ActiveRecord: 9.3ms | Allocations: 27319)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:53:03 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:53:03 -0400
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (19.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 3.3ms | Allocations: 7863)
+
+
+  [1m[36mTask Load (65.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (39.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (16.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (5.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (8.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (18.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 296ms (Views: 87.7ms | ActiveRecord: 207.5ms | Allocations: 29805)
+
+
+Started POST "/teams" for ::1 at 2020-03-18 20:53:09 -0400
+Processing by TeamsController#create as JSON
+  Parameters: {"name"=>"Picasso", "team"=>{"name"=>"Picasso"}}
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[36mTeam Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "teams" WHERE "teams"."id" IS NOT NULL AND "teams"."slug" = $1 LIMIT $2[0m  [["slug", "picasso"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[36mTeam Create (3.7ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "slug") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Picasso"], ["created_at", "2020-03-19 00:53:09.918353"], ["updated_at", "2020-03-19 00:53:09.918353"], ["slug", "picasso"]]
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/teams_controller.rb:12:in `create'
+Completed 200 OK in 35ms (Views: 0.5ms | ActiveRecord: 17.6ms | Allocations: 3405)
+
+
+Started GET "/teams/cdc" for ::1 at 2020-03-18 20:54:32 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"cdc"}
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "cdc"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 14ms (Views: 5.6ms | ActiveRecord: 2.2ms | Allocations: 1830)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:54:42 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:54:42 -0400
+Processing by TasksController#index as */*
+Processing by TeamsController#index as */*
+  [1m[36mTask Load (49.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 93ms (Views: 43.0ms | ActiveRecord: 49.3ms | Allocations: 8525)
+
+
+  [1m[36mTeam Load (70.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (23.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 260ms (Views: 142.4ms | ActiveRecord: 116.9ms | Allocations: 30211)
+
+
+Started GET "/teams/cdc" for ::1 at 2020-03-18 20:55:06 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"cdc"}
+  [1m[36mTeam Load (2.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "cdc"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 3.4ms | Allocations: 1830)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:55:45 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (2.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 4.2ms | Allocations: 2960)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:57:21 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:57:21 -0400
+Processing by TasksController#index as */*
+Processing by TeamsController#index as */*
+  [1m[36mTask Load (9.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 28ms (Views: 17.6ms | ActiveRecord: 9.6ms | Allocations: 8526)
+
+
+  [1m[36mTeam Load (46.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (5.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (24.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 173ms (Views: 67.6ms | ActiveRecord: 104.7ms | Allocations: 30208)
+
+
+Started GET "/teams/cdc" for ::1 at 2020-03-18 20:57:24 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"cdc"}
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "cdc"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.0ms | Allocations: 1830)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 20:58:36 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 20:58:36 -0400
+Processing by TasksController#index as */*
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 2.0ms | Allocations: 7863)
+
+
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (8.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (31.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (6.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (4.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 145ms (Views: 82.0ms | ActiveRecord: 62.1ms | Allocations: 22267)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 20:58:42 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 4.3ms | Allocations: 2960)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 21:00:49 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 21:00:49 -0400
+Processing by TasksController#index as */*
+  [1m[36mTask Load (2.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 23ms (Views: 19.7ms | ActiveRecord: 2.5ms | Allocations: 7863)
+
+
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (10.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (6.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (10.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (9.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 122ms (Views: 65.0ms | ActiveRecord: 56.1ms | Allocations: 22267)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 21:00:55 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 1.3ms | Allocations: 2960)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 21:01:29 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 21:01:29 -0400
+Processing by TasksController#index as */*
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (41.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 57ms (Views: 14.1ms | ActiveRecord: 41.9ms | Allocations: 10006)
+
+
+  [1m[36mTask Load (47.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (21.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (11.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (24.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (13.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (35.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (21.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 245ms (Views: 59.4ms | ActiveRecord: 184.8ms | Allocations: 30211)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 21:01:35 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 1.0ms | Allocations: 2960)
+
+
+Started GET "/tasks" for ::1 at 2020-03-18 21:03:48 -0400
+Started GET "/teams" for ::1 at 2020-03-18 21:03:48 -0400
+Processing by TeamsController#index as */*
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 1.8ms | Allocations: 7863)
+
+
+  [1m[36mTeam Load (45.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (19.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (19.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (18.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (10.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (6.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (5.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 221ms (Views: 74.8ms | ActiveRecord: 145.9ms | Allocations: 30879)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 21:03:53 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (6.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 17ms (Views: 7.0ms | ActiveRecord: 6.5ms | Allocations: 2964)
+
+
+Started GET "/teams" for ::1 at 2020-03-18 21:04:52 -0400
+Started GET "/tasks" for ::1 at 2020-03-18 21:04:52 -0400
+Processing by TeamsController#index as */*
+  [1m[36mTeam Load (3.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (8.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/controllers/tasks_controller.rb:5:in `index'
+Completed 200 OK in 22ms (Views: 12.9ms | ActiveRecord: 8.8ms | Allocations: 7863)
+
+
+  [1m[36mTask Load (24.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 20]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (20.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 1]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 2]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 3]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 55]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 56]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 89]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 94]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 95]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (7.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 96]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (79.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 97]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 98]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 99]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 100]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 101]]
+  ↳ app/controllers/teams_controller.rb:5:in `index'
+Completed 200 OK in 230ms (Views: 80.4ms | ActiveRecord: 149.4ms | Allocations: 30872)
+
+
+Started GET "/teams/joni-mitchell" for ::1 at 2020-03-18 21:04:56 -0400
+Processing by TeamsController#show as */*
+  Parameters: {"id"=>"joni-mitchell"}
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."slug" = $1 LIMIT $2[0m  [["slug", "joni-mitchell"], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:17:in `show'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."team_id" = $1[0m  [["team_id", 93]]
+  ↳ app/controllers/teams_controller.rb:18:in `show'
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 1.2ms | Allocations: 2960)
+
+

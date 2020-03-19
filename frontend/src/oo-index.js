@@ -1,3 +1,4 @@
+
 //toggle form views
 let taskFormShow = false;
 let newTeamFormShow = false; 
@@ -93,7 +94,7 @@ function newTask(e){
     let currentTeamId = parseInt(document.querySelector('.team-display').dataset.id);
     let taskObj = {
         'title': taskValues[0].value,
-        'dueDate': inputDate,
+        'dueDate': inpuftDate,
         'complete': false,
         'urgency': taskValues[2].checked,
         'description': taskValues[4].value,
@@ -104,22 +105,22 @@ function newTask(e){
 }
 
 //all of this should be routed to Task class
-function createTaskField(e){
-    const taskField = document.querySelector("#task-field");
-    let targetTeamId = parseInt(e.target.parentNode.dataset.id);
-    //let targetTeam = Team.all.find(team => team.id === targetTeamId);
+// function createTaskField(e){
+//     const taskField = document.querySelector("#task-field");
+//     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
+//     //let targetTeam = Team.all.find(team => team.id === targetTeamId);
 
-    let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-    let teamTasks = '';
+//     let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
+//     let teamTasks = '';
 
-    for (const task of teamTasksArr){
-        teamTasks += tasksAdapter.createIndividualTask(task)
-    };
+//     for (const task of teamTasksArr){
+//         teamTasks += tasksAdapter.createIndividualTask(task)
+//     };
 
-    taskField.innerHTML += teamTasks;
-    document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-    document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-}
+//     taskField.innerHTML += teamTasks;
+//     document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
+//     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
+// }
 
 function removeTask(e){
     e.preventDefault();

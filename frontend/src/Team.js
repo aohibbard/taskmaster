@@ -18,12 +18,11 @@ class Team{
             <h2>${this.name}</h2>
     
             <h4>Our Tasks</h2>
-            <button id="load-tasks">Refresh Tasks</button>
             <button type="button" id="add-task">Add Task</button><br>
             <div class="team-tasks-${this.id}" id="task-field" data-id="${this.id}">
             </div>
         </div>`
-        document.getElementById("load-tasks").addEventListener("click", createTaskField)
+        // document.getElementById("load-tasks").addEventListener("click", createTaskField)
         document.getElementById("add-task").addEventListener("click", toggleAddTask)
     }
 

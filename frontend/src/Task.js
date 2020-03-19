@@ -20,6 +20,8 @@ class Task {
         let dueOn = parseInt(this.dueDate)
         let dateToS = new Date(dueOn)
         let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
+        //show date obvi needs better functionality
+
 
         if (!this.complete && !this.urgency) {
         return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white">

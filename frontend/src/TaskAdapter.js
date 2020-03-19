@@ -42,39 +42,40 @@ class TaskAdapter{
     };
 
 
-    createIndividualTask(task){
-        let dueOn = parseInt(task.dueDate)
-        let dateToS = new Date(dueOn)
-        let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
+    // createIndividualTask(task){
+    //     let dueOn = parseInt(task.dueDate)
+    //     let dateToS = new Date(dueOn)
+    //     let showDate = String(dateToS).replace("00:00:00 GMT-0400", "")
+    //     //show date obvi needs better functionality
 
-        if (!task.complete && !task.urgency) {
-        return `<div class="task" task-data-id="${task.id}" style="background-color:white">
-            <h4>${task.title}</h4>
-            <p>Due: ${showDate} </p>
-            <p>Notes: ${task.description}<p>
-            <button class="complete" data-id="${task.id}">Complete?</button>
-            <button class="delete-tasks" data-id="${task.id}">Delete</button>
-            <br>
-            </div><br>` ; 
-        } else if (!task.complete && !!task.urgency){
-            return `<div class="task" task-data-id="${task.id}" style="background-color:lemonchiffon">
-            <h4>${task.title}</h4>
-            <p>Due: ${showDate} </p>
-            <p>Notes: ${task.description}<p>
-            <button class="complete" data-id="${task.id}">Complete?</button>
-            <button class="delete-tasks" data-id="${task.id}">Delete</button>
-            <br>
-            </div><br>` ;
-        } else {
-            return `<div class="task" task-data-id="${task.id}" style="background-color:white">
-            <h4>${task.title}</h4>
-            <p>Due: ${showDate} </p>
-            <p>Notes: ${task.description}<p>
-            <button class="delete-tasks" data-id="${task.id}">Delete</button>
-            <br>
-            </div><br>`
-        }
-    };
+    //     if (!task.complete && !task.urgency) {
+    //     return `<div class="task" task-data-id="${task.id}" style="background-color:white">
+    //         <h4>${task.title}</h4>
+    //         <p>Due: ${showDate} </p>
+    //         <p>Notes: ${task.description}<p>
+    //         <button class="complete" data-id="${task.id}">Complete?</button>
+    //         <button class="delete-tasks" data-id="${task.id}">Delete</button>
+    //         <br>
+    //         </div><br>` ; 
+    //     } else if (!task.complete && !!task.urgency){
+    //         return `<div class="task" task-data-id="${task.id}" style="background-color:lemonchiffon">
+    //         <h4>${task.title}</h4>
+    //         <p>Due: ${showDate} </p>
+    //         <p>Notes: ${task.description}<p>
+    //         <button class="complete" data-id="${task.id}">Complete?</button>
+    //         <button class="delete-tasks" data-id="${task.id}">Delete</button>
+    //         <br>
+    //         </div><br>` ;
+    //     } else {
+    //         return `<div class="task" task-data-id="${task.id}" style="background-color:white">
+    //         <h4>${task.title}</h4>
+    //         <p>Due: ${showDate} </p>
+    //         <p>Notes: ${task.description}<p>
+    //         <button class="delete-tasks" data-id="${task.id}">Delete</button>
+    //         <br>
+    //         </div><br>`
+    //     }
+    // };
 
     //COMPLETE PATCH
     markComplete(task){
@@ -95,6 +96,7 @@ class TaskAdapter{
 
             let targetTask = Task.all.find(task => task.id === parsed.id)
             targetTask.complete = true;
+            targetTask.urgency = false;
             targetTask.updateAllTasks()
             //  .then(document.getElementById("task-field").innerHTML = '')
 
