@@ -68,7 +68,7 @@ function querySpecificTeam(e){
     let searchInput = document.getElementById("find-team-input").value; 
     let teamObj = Team.all.find(team => team.name === searchInput)
     if (!!teamObj){
-        teamsAdapter.fetchGivenTeam(teamObj.slug)
+        teamsAdapter.fetchGivenTeam(teamObj)
     } else {
         console.log("Team does not exist")
     }
@@ -94,7 +94,7 @@ function newTask(e){
     let currentTeamId = parseInt(document.querySelector('.team-display').dataset.id);
     let taskObj = {
         'title': taskValues[0].value,
-        'dueDate': inpuftDate,
+        'dueDate': inputDate,
         'complete': false,
         'urgency': taskValues[2].checked,
         'description': taskValues[4].value,

@@ -52,7 +52,7 @@ class Task {
     };
 
     updateAllTasks(){
-
+        debugger
         const taskField = document.getElementById("task-field")
         let targetTeamId = this.teamId;
         // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)

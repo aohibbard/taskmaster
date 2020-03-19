@@ -2,12 +2,11 @@ class Team{
 
     static all = [];
 
-    constructor({id, name, slug}){
+    constructor({id, name, slug, tasks}){
         this.id = id,
         this.name = name;
         this.slug = slug;
-       // this.tasks = []
-
+        this.tasks = tasks;
         Team.all.push(this)
     }
 

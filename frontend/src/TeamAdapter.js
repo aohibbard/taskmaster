@@ -9,7 +9,8 @@ class TeamAdapter{
         .then(res => res.json())
         .then(teams => {
             teams.data.forEach(obj => {
-                let parsed = {id: obj.id, ...obj.attributes}
+
+                let parsed = {...obj.attributes, tasks: obj.attributes.tasks}
                 new Team(parsed)
             })
         })
@@ -38,17 +39,24 @@ class TeamAdapter{
 
 
     fetchGivenTeam(slug){
-        fetch(this.baseURL + "/" + slug)
+        fetch(this.baseURL + "/" + slug.id)
         .then(res => res.json())
         .then(team => {
-            let parsed = {id: team.data.id, ...team.data.attributes}
-            let teamObj = new Team(parsed)
+            //find out why we get that nested structure of data as a res from our call
+            //hopefully tailor the response so that it is exactly the structure needed in order to pass directly to constructor
+            //edit constructor also to allow for receiving the task array
+            //render the list of tasks to the dom associated with the given team, from that object created from response (your new Team object)
+
+            //It is fast JSON: see: https://github.com/Netflix/fast_jsonapi
+            let teamObj = new Team(team.data.attributes)
             teamObj.renderTeam(); 
 
-            if (team.data.attributes.tasks.length){
+            if (!!teamObj.tasks){
+                const showTasks = new Task(teamObj.tasks[0])
+                showTasks.updateAllTasks()
 
-                let task = Task.all.find(task => task.teamId === teamObj.id)
-                task.updateAllTasks();
+                // let task = Task.all.find(task => task.teamId === teamObj.id)
+                // task.updateAllTasks();
             }
             
         })

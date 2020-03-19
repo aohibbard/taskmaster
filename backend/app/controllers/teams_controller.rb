@@ -10,11 +10,12 @@ class TeamsController < ApplicationController
 
     def create 
         team = Team.create(name: params[:name])
-        render json: team
+        render json: TeamSerializer.new(team)
     end 
 
     def show  
-        team = Team.friendly.find(params[:id])
+        # team = Team.friendly.find(params[:id])
+        team = Team.find(params[:id])
         render json: TeamSerializer.new(team)
     end 
 
