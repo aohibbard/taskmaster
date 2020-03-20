@@ -51,21 +51,20 @@ class Task {
         }
     };
 
-    updateAllTasks(){
-        debugger
-        const taskField = document.getElementById("task-field")
-        let targetTeamId = this.teamId;
-        // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
-        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-        let taskArr = ''
-
-        for (const task of teamTasks){
-            taskArr += task.createTaskForDom()
-        }
-        taskField.innerHTML = taskArr;
-        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-    }
+    // updateAllTasks(){
+    //     const taskField = document.getElementById("task-field")
+    //     let targetTeamId = this.teamId;
+    //     // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
+    //     let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
+    //     let taskArr = ''
+    //     // d
+    //     for (const task of teamTasks){
+    //         taskArr += task.createTaskForDom()
+    //     }
+    //     taskField.innerHTML = taskArr;
+    //     document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
+    //     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
+    // }
 
     set taskComplete(status=true){
         this.complete = status;

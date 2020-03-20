@@ -104,8 +104,9 @@ class TaskAdapter{
     }
 
     deleteTask(task){
-        const targetTaskId = parseInt(task.lastElementChild.firstElementChild.dataset.id)
-        const targetTask = Task.all.find(task => task.id === targetTaskId)
+        const targetTaskId = parseInt(task.querySelector('button').dataset.id)
+        // const targetTask = Task.all.find(task => task.id === targetTaskId)
+
         fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
         })
