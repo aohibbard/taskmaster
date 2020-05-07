@@ -38,6 +38,7 @@ function parseTeam(team){
     for (const teamUnit of team.data){
         let teamAttr = teamUnit.attributes
         let teamCard = displayTeam(teamAttr)
+        // displayTeam(teamUnit.attributes)
     }
     //additional functionality of buttons, etc?
     //pass in tasks? teamAttr.tasks.forEach(function to create task array)

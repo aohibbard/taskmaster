@@ -51,6 +51,7 @@ class TeamAdapter{
             let teamObj = new Team(team.data.attributes)
             teamObj.renderTeam(); 
 
+            //If team.tasks exist, render all tasks
             if (!!teamObj.tasks){
                     const taskField = document.getElementById("task-field")
                     let taskGroup = ''
@@ -61,28 +62,6 @@ class TeamAdapter{
                     taskField.innerHTML = taskGroup;
                     document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
                     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-                    // Task.updateAllTasks(teamObj.tasks)
-                    
-
-
-                // for (const task of teamObj.tasks){
-                //     task.renderAllTasks()
-                // }
-
-                // const taskField = document.getElementById("task-field");
-                // let teamTasks = teamObj.tasks.sort(task => task.teamId === teamObj.id).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-                // let taskArr = ''
-
-                // for (const task of teamObj.tasks){
-                //     taskArr += showTasks.createTaskForDom(task)
-                // }
-                // taskField.innerHTML = taskArr;
-                // document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-                // document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-
-                //old code
-                // let task = Task.all.find(task => task.teamId === teamObj.id)
-                // task.updateAllTasks();
             }
             
         })

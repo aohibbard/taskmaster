@@ -50,7 +50,8 @@ class Task {
             </div><br>`
         }
     };
-
+    
+    //rendered unneccessary 
     // updateAllTasks(){
     //     const taskField = document.getElementById("task-field")
     //     let targetTeamId = this.teamId;
