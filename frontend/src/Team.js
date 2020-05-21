@@ -12,13 +12,19 @@ class Team{
 
     renderTeam(){
         const teamField = document.querySelector('#team-container')
-        //let teamTasks = team.tasks.forEach(createTaskField);    
+        // div creates a drag zone and event handlers for dragging task divs
         teamField.innerHTML = `<div class="team-display" data-id="${this.id}">
             <h2>${this.name}</h2>
     
             <h4>Our Tasks</h2>
             <button type="button" id="add-task">Add Task</button><br>
-            <div class="team-tasks-${this.id}" id="task-field" data-id="${this.id}">
+            <div
+                class="team-tasks-${this.id}"
+                id="task-field" data-id="${this.id}"
+                draggable="true"
+                ondragover='onDragOver(event);'
+                ondrop='dropHandler(event)'
+                >
             </div>
         </div>`
         // document.getElementById("load-tasks").addEventListener("click", createTaskField)

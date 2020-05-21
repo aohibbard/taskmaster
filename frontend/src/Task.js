@@ -24,7 +24,7 @@ class Task {
 
 
         if (!this.complete && !this.urgency) {
-        return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white">
+        return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white" draggable='true' ondragstart="onDragStart(event)">
             <h4>${this.title}</h4>
             <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
@@ -32,7 +32,7 @@ class Task {
             <br>
             </div><br>` ; 
         } else if (!this.complete && !!this.urgency) {
-            return `<div class="task" task-data-id="${this.id}" style="background-color:lemonchiffon">
+            return `<div class="task" id="task-${this.id}" task-data-id="${this.id}" style="background-color:lemonchiffon" draggable='true' ondragstart='onDragStart(event);'>
             <h4>${this.title}</h4>
             <p>Due: ${showDate} </p>
             <p>Notes: ${this.description}<p>
@@ -41,7 +41,7 @@ class Task {
             <br>
             </div><br>` ;
         } else {
-            return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white">
+            return `<div class="task" id="task-${this.id}" data-id="${this.id}" style="background-color:white" draggable='true' ondragstart='onDragStart(event);'>
             <h4>${this.title}</h4>
             <p>Due: ${showDate}</p>
             <p>Notes: ${this.description}<p>
@@ -51,24 +51,58 @@ class Task {
         }
     };
     
-    //rendered unneccessary 
-    // updateAllTasks(){
-    //     const taskField = document.getElementById("task-field")
-    //     let targetTeamId = this.teamId;
-    //     // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
-    //     let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-    //     let taskArr = ''
-    //     // d
-    //     for (const task of teamTasks){
-    //         taskArr += task.createTaskForDom()
-    //     }
-    //     taskField.innerHTML = taskArr;
-    //     document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-    //     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-    // }
+    //doing duplicate work. needs to be changed.
+    updateAllTasks(){
+        const taskField = document.getElementById("task-field")
+        let targetTeamId = this.teamId;
+        // let teamTasks = Task.all.filter(task => task.teamId === targetTeamId)
+        let teamTasks = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
+        let taskArr = ''
+        // d
+        for (const task of teamTasks){
+            taskArr += task.createTaskForDom()
+        }
+        taskField.innerHTML = taskArr;
+        document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
+        document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
+    }
 
     set taskComplete(status=true){
         this.complete = status;
     }
 
+    // // DRAG EVENT LISTENERS
+    // const element = document.querySelectorAll('.task')
+    // element.addEventListener("dragstart", onDragStart);
+
+    // // DRAG FUNCTIONS
+    // onDragStart(event){
+    //     console.log('drag start')
+    //     event
+    //         .dataTransfer
+    //         .setData('text/plain', event.target.id);
+        
+    //     event
+    //         .currentTarget
+    //         .style
+    // }
+
+    // onDragOver(event) {
+    //     event.preventDefault();
+    // }
+
+    // onDrop(event) {
+    //     const id = event
+    //       .dataTransfer
+    //       .getData('text');
+
+    //     const draggableElement = document.getElementById(id);
+    //     const dropzone = event.target;
+    //     debugger
+    //     dropzone.appendChild(draggableElement);
+      
+    //     event
+    //       .dataTransfer
+    //       .clearData();
+    // }
 }

@@ -104,6 +104,27 @@ function newTask(e){
     tasksAdapter.addNewTask(taskObj)
 }
 
+// BELOW FUNCTION FROM DRAGGABLE -- NOT IN USE
+
+// function simpleList(){
+//     // container selector
+//     const containerSelector = '#SimpleList .StackedList';
+//     const container = document.querySelector(".team-tasks-2")
+//     if ( container.querySelectorAll('h4').length === 0) {
+//         return false
+//     }
+//     const sortable = new Sortable(containers, {
+//         draggable: '.StackedListItem--isDraggable',
+//         mirror: {
+//             //container selector
+//           appendTo: containerSelector,
+//           constrainDimensions: true,
+//         },
+//       });
+    
+//       return sortable 
+// }
+
 //all of this should be routed to Task class
 // function createTaskField(e){
 //     const taskField = document.querySelector("#task-field");
@@ -148,5 +169,47 @@ function completeStatus(e){
 
     tasksAdapter.markComplete(taskObj)
 }
+
+    // DRAG EVENT LISTENERS
+    // const element = document.querySelectorAll('.task')
+    // element.addEventListener("drag", onDragStart);
+
+    // DRAG FUNCTIONS
+    function onDragStart(event){
+        event.dataTransfer.setData('text/plain', event.target.id);
+        // event.currentTarget.style.border = "dashed";
+        // event
+        //     .currentTarget
+        //     .style
+    }
+
+    // function dragstartHandler(event) {
+    //     event.dataTransfer.dropEffect = "move";
+    //   }
+
+    function onDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move"
+    }
+
+    function dropHandler(event) {
+        event.stopPropagation();
+        // e.preventDefault();
+        // // Get the id of the target and add the moved element to the target's DOM
+        // const data = e.dataTransfer.getData("text/html");
+        // debugger
+        // e.target.appendChild(document.getElementById(data));
+
+        const id = event
+        .dataTransfer
+        .getData('text/plain');
+    
+      const draggableElement = document.getElementById(id);
+      const dropzone = event.target;
+        // debugger
+      dropzone.appendChild(draggableElement);
+    
+      event.dataTransfer.clearData();
+    }
 
 
