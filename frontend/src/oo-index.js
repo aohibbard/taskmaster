@@ -194,13 +194,12 @@ function completeStatus(e){
 
     function dropHandler(event) {
         event.stopPropagation();
-        // e.preventDefault();
 
         const id = event.dataTransfer.getData('text/plain');
     
         const draggableElement = document.getElementById(id);
+        //target container div
         const dropzone = event.target.parentElement;
-      debugger
         dropzone.appendChild(draggableElement);
     
       event.dataTransfer.clearData();
