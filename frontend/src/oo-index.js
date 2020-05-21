@@ -195,19 +195,13 @@ function completeStatus(e){
     function dropHandler(event) {
         event.stopPropagation();
         // e.preventDefault();
-        // // Get the id of the target and add the moved element to the target's DOM
-        // const data = e.dataTransfer.getData("text/html");
-        // debugger
-        // e.target.appendChild(document.getElementById(data));
 
-        const id = event
-        .dataTransfer
-        .getData('text/plain');
+        const id = event.dataTransfer.getData('text/plain');
     
-      const draggableElement = document.getElementById(id);
-      const dropzone = event.target;
-        // debugger
-      dropzone.appendChild(draggableElement);
+        const draggableElement = document.getElementById(id);
+        const dropzone = event.target.parentElement;
+      debugger
+        dropzone.appendChild(draggableElement);
     
       event.dataTransfer.clearData();
     }
