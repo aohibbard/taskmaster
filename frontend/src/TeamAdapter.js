@@ -42,12 +42,6 @@ class TeamAdapter{
         fetch(this.baseURL + "/" + slug.id)
         .then(res => res.json())
         .then(team => {
-            //find out why we get that nested structure of data as a res from our call
-            //hopefully tailor the response so that it is exactly the structure needed in order to pass directly to constructor
-            //edit constructor also to allow for receiving the task array
-            //render the list of tasks to the dom associated with the given team, from that object created from response (your new Team object)
-
-            //It is fast JSON: see: https://github.com/Netflix/fast_jsonapi
             let teamObj = new Team(team.data.attributes)
             teamObj.renderTeam(); 
 

@@ -4,9 +4,11 @@ let taskFormShow = false;
 let newTeamFormShow = false; 
 let findTeamShow = false;
 
-const BASE_URL = "http://localhost:3000";
-const TEAMS_URL = "http://localhost:3000/teams";
-const TASKS_URL = "http://localhost:3000/tasks/";
+// local api was "http://localhost:3000"; + tasks or teams
+
+const BASE_URL = `https://task-master-backend-api.herokuapp.com/`;
+const TEAMS_URL = `https://task-master-backend-api.herokuapp.com/teams`;
+const TASKS_URL = `https://task-master-backend-api.herokuapp.com/tasks`;
 
 //DOM elements
 const bodyMain = document.querySelector('main');
