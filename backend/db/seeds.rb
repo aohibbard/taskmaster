@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# use command git subtree push --prefix backend heroku master
+
 Team.create(name: "Boomtown Rats")
 Team.create(name: "Dixie Chicks")
 Team.create(name: "Goop")
