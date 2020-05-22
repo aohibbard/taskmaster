@@ -55,8 +55,8 @@ findTeamButton.addEventListener("click", () => {
 
 
 //initiate fetch
-const teamsAdapter = new TeamAdapter("http://localhost:3000/teams");
-const tasksAdapter = new TaskAdapter("http://localhost:3000/tasks")
+const teamsAdapter = new TeamAdapter(TEAMS_URL);
+const tasksAdapter = new TaskAdapter(TASKS_URL);
 
 teamsAdapter.fetchTeams()
 tasksAdapter.fetchTasks()

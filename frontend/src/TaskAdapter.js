@@ -13,7 +13,6 @@ class TaskAdapter{
             })
         })
         .then(() => console.log(Task.all))
-        //.then(() => console.log("Tasks loaded"))
     }
 
     //POST TASK
