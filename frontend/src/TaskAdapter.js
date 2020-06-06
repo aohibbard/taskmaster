@@ -35,9 +35,6 @@ class TaskAdapter{
             newTask.updateAllTasks();
             form.reset()
         })
-        //.then(form.reset)
-        //need to change this to toggle off 
-
     };
 
 
@@ -77,9 +74,8 @@ class TaskAdapter{
     // };
 
     //COMPLETE PATCH
-    markComplete(task){
-        //const updateDom = new Task.updateAllTasks(parsed)
-        
+
+    markComplete(task){        
         let configObj = {
             method: "PATCH",
             headers: {
@@ -104,7 +100,6 @@ class TaskAdapter{
 
     deleteTask(task){
         const targetTaskId = parseInt(task.querySelector('button').dataset.id)
-        // const targetTask = Task.all.find(task => task.id === targetTaskId)
 
         fetch(this.baseURL + `/${targetTaskId}`, {
             method: 'DELETE'
