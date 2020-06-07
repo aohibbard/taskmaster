@@ -68,7 +68,7 @@ findTeamBtn.addEventListener('click', querySpecificTeam)
 function querySpecificTeam(e){
     e.preventDefault()
     let searchInput = document.getElementById("find-team-input").value; 
-    let teamObj = Team.all.find(team => team.name === searchInput)
+    let teamObj = Team.all.find(team => team.name.toLowerCase() === searchInput.toLowerCase())
     if (!!teamObj){
         teamsAdapter.fetchGivenTeam(teamObj)
     } else {
