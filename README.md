@@ -1,6 +1,6 @@
 # Task Master
 
-Task Master is a Javascript application with a Rails API, built for groups of users to manage projects and tasks. The project relies on a PostgresQL database. 
+Task Master is a Javascript application with a Rails API, built for groups of users to manage projects and tasks. It uses a PostgreSQL database that is hosted on Heroku. A working demo of the app is available [here](https://aohibbard.github.io/taskmaster/frontend/). 
 
 ## Getting Started
 
