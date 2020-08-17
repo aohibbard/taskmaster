@@ -13,7 +13,7 @@ class Team{
     renderTeam(){
         const teamField = document.querySelector('#team-container')
         // div creates a drag zone and event handlers for dragging task divs
-        teamField.innerHTML = `<div class="team-display" data-id="${this.id}">
+        teamField.innerHTML = `<div class="icon-box" id="hero" data-id="${this.id}">
             <h2>${this.name}</h2>
     
             <h4>Our Tasks</h2>

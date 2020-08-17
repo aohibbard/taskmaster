@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="onepage.css" />
     </head>
 
 <body>
-<main>
+    <header id="header">
+        <div class="col-xl-7 col-lg-9 text-center">        <div id="menu">
+            <h2>Task Master</h2>
 
-    <div id="menu">
-    <h2>Task Master</h2>
-
-        <button type="button" id="add-team">Add Team</button>
-        <!-- <button type="button" id="add-task">Add Task</button><br> -->
-        <button type="button" id="find-team">Find Team</button>
-    </div>
-
+             <button type="button" class="get-started-btn" id="add-team">Add Team</button>
+            <button type="button" class="get-started-btn" id="find-team">Find Team</button>
+        </div>
+</header>
+<!-- add id="hero" -->
+<main id="hero" ::before>
     <div id="add-team-form" class="toggle-form">
         <p>Create Your Team</p>
         <label>Add Team</label>
@@ -40,13 +41,9 @@
         <input type="submit" value="Create Task" class="task-submit">
         </form>
     </div> 
+        <div id="team-container" class="container">
 
-
-
-    <div id="team-container">
-
-    </div>
-
+        </div>
     </main>
     </body>
     <script type="text/javascript" src="src/Team.js"></script>
@@ -54,6 +51,4 @@
     <script type="text/javascript" src="src/Task.js"></script>
     <script type="text/javascript" src="src/TaskAdapter.js"></script>
     <script type="text/javascript" src="src/oo-index.js"></script>
-    <!-- DRAGGABLE BUNDLE -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js"></script> -->
-    </html>
+</html>

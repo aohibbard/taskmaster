@@ -4,8 +4,7 @@ let taskFormShow = false;
 let newTeamFormShow = false; 
 let findTeamShow = false;
 
-// local api was "http://localhost:3000"; + tasks or teams
-
+// FETCH URLS
 const BASE_URL = `https://task-master-backend-api.herokuapp.com/`;
 const TEAMS_URL = `https://task-master-backend-api.herokuapp.com/teams`;
 const TASKS_URL = `https://task-master-backend-api.herokuapp.com/tasks`;
@@ -54,7 +53,7 @@ findTeamButton.addEventListener("click", () => {
 });
 
 
-//initiate fetch
+//initiate fetch on DOM load
 const teamsAdapter = new TeamAdapter(TEAMS_URL);
 const tasksAdapter = new TaskAdapter(TASKS_URL);
 
@@ -67,8 +66,8 @@ findTeamBtn.addEventListener('click', querySpecificTeam)
 
 function querySpecificTeam(e){
     e.preventDefault()
-    let searchInput = document.getElementById("find-team-input").value; 
-    let teamObj = Team.all.find(team => team.name.toLowerCase() === searchInput.toLowerCase())
+    let searchInput = document.getElementById("find-team-input").value.toLowerCase(); 
+    let teamObj = Team.all.find(team => team.name.toLowerCase() === searchInput)
     if (!!teamObj){
         teamsAdapter.fetchGivenTeam(teamObj)
     } else {
@@ -106,45 +105,6 @@ function newTask(e){
     tasksAdapter.addNewTask(taskObj)
 }
 
-// BELOW FUNCTION FROM DRAGGABLE -- NOT IN USE
-
-// function simpleList(){
-//     // container selector
-//     const containerSelector = '#SimpleList .StackedList';
-//     const container = document.querySelector(".team-tasks-2")
-//     if ( container.querySelectorAll('h4').length === 0) {
-//         return false
-//     }
-//     const sortable = new Sortable(containers, {
-//         draggable: '.StackedListItem--isDraggable',
-//         mirror: {
-//             //container selector
-//           appendTo: containerSelector,
-//           constrainDimensions: true,
-//         },
-//       });
-    
-//       return sortable 
-// }
-
-//all of this should be routed to Task class
-// function createTaskField(e){
-//     const taskField = document.querySelector("#task-field");
-//     let targetTeamId = parseInt(e.target.parentNode.dataset.id);
-//     //let targetTeam = Team.all.find(team => team.id === targetTeamId);
-
-//     let teamTasksArr = Task.all.filter(task => task.teamId === targetTeamId).sort(function(a, b){return a.dueDate - b.dueDate}).sort(function(a, b){return a.complete - b.complete})
-//     let teamTasks = '';
-
-//     for (const task of teamTasksArr){
-//         teamTasks += tasksAdapter.createIndividualTask(task)
-//     };
-
-//     taskField.innerHTML += teamTasks;
-//     document.querySelectorAll(".complete").forEach(btn => btn.addEventListener("click", completeStatus));
-//     document.querySelectorAll(".delete-tasks").forEach(btn => btn.addEventListener("click", removeTask));
-// }
-
 function removeTask(e){
     e.preventDefault();
     const targetTaskId = parseInt(e.target.dataset.id)
@@ -172,22 +132,12 @@ function completeStatus(e){
     tasksAdapter.markComplete(taskObj)
 }
 
-    // DRAG EVENT LISTENERS
-    // const element = document.querySelectorAll('.task')
-    // element.addEventListener("drag", onDragStart);
-
-    // DRAG FUNCTIONS
+    // DRAGGABLE FUNCTIONS
+    // event handlers in divs when tasks created
     function onDragStart(event){
         event.dataTransfer.setData('text/plain', event.target.id);
-        // event.currentTarget.style.border = "dashed";
-        // event
-        //     .currentTarget
-        //     .style
     }
 
-    // function dragstartHandler(event) {
-    //     event.dataTransfer.dropEffect = "move";
-    //   }
 
     function onDragOver(event) {
         event.preventDefault();
