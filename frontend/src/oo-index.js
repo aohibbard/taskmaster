@@ -92,7 +92,7 @@ function newTask(e){
     
     let taskValues = document.querySelectorAll(".task-input");
     let inputDate = Date.parse(taskValues[1].value);
-    let currentTeamId = parseInt(document.querySelector('.team-display').dataset.id);
+    let currentTeamId = parseInt(document.querySelector('.icon-box').dataset.id);
     let taskObj = {
         'title': taskValues[0].value,
         'dueDate': inputDate,
